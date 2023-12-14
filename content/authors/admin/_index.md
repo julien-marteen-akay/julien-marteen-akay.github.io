@@ -64,7 +64,7 @@ social:
 highlight_name: true
 ---
 
-HI! I'm Julien Marteen Akay, an AI professional bridging industry and research. By day, I consult on data solutions, and by night, I immerse myself in deep learning as a research assistant. View my CV [here](https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link).
+Hi! I'm Julien Marteen Akay, an AI professional bridging industry and research. By day, I consult on data solutions, and by night, I immerse myself in deep learning as a research assistant. View my CV [here](https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link).
 
 Dedicated to advancing AI, my goal is to develop **human-level AI**. I commit seven days a week to mastering self-supervised learning and objective-driven AI.
 
