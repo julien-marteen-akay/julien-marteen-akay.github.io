@@ -17,9 +17,9 @@ status:
 superuser: true
 
 # Role/position/tagline
-role: "Data Science in Industry
-       \n
-       Deep Learning in Research"
+role: |
+  Data Science in Industry  
+  Deep Learning in Research
 
 bio: My research is centered on advancing human-level AI through a fusion of self-supervised learning and Objective-Driven AI (ODAI).
 
