@@ -17,7 +17,9 @@ status:
 superuser: true
 
 # Role/position/tagline
-role: Data Scientist in Industry and Deep Learning in Research
+role: | 
+  Data Science in Industry
+  Deep Learning in Research
 
 # Organizations/Affiliations to show in About widget
 #organizations:
@@ -127,5 +129,5 @@ HI! I'm Julien Marteen Akay, an AI professional bridging industry and research. 
 
 Dedicated to advancing AI, my goal is to develop **human-level AI**. I commit seven days a week to mastering self-supervised learning and objective-driven AI.
 
-Post-masters (Feb 2024), I aim to pursue a PhD in advanced (autonomous) machine intelligence while working full-time. I've shared insights in talks on [A Path Towards Autonomous Machine Intelligence"(https://openreview.net/pdf?id=BZ5a1r-kVsf) covering topics from Latent-Variable Energy-Based Models turning neural nets to one-to-many mappings to scalable self-supervised learning via methods like [VICReg](https://arxiv.org/abs/2105.04906). I applied the aforementioned methods in AI for healthcare and microscopy image denoising, achieving promising results that are currently confidential and awaiting publication.
+Post-masters (Feb 2024), I aim to pursue a PhD in advanced (autonomous) machine intelligence while working full-time. I've shared insights in talks on [A Path Towards Autonomous Machine Intelligence](https://openreview.net/pdf?id=BZ5a1r-kVsf) covering topics from Latent-Variable Energy-Based Models turning neural nets to one-to-many mappings to scalable self-supervised learning via methods like [VICReg](https://arxiv.org/abs/2105.04906). I applied the aforementioned methods in AI for healthcare and microscopy image denoising, achieving promising results that are currently confidential and awaiting publication.
 {style="text-align: justify;"}
