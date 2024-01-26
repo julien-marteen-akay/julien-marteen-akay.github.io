@@ -33,10 +33,10 @@ interests:
 education:
   courses:
     - course: M.Sc. (Research Master) in Data Science
-      institution: Bielefeld University of Applied Sciences and Arts
+      institution: Hochschule Bielefeld - University of Applied Sciences and Arts
       year: 2024
     - course: B.Eng. in Mechanical Engineering
-      institution: Bielefeld University of Applied Sciences and Arts
+      institution: Hochschule Bielefeld - University of Applied Sciences and Arts
       year: 2021
 
 social:
