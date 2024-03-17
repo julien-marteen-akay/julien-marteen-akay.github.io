@@ -64,9 +64,13 @@ social:
 highlight_name: true
 ---
 
-Hi! I'm Julien Marteen Akay, an AI professional bridging industry and research. By day, I consult on data solutions, and by night, I immerse myself in deep learning as a research assistant. View my CV [here](https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link).
+Hi! I'm Julien Marteen Akay, a data scientist in industry and deep learning research associate in academia.  
 
-Dedicated to advancing AI, my goal is to develop **human-level AI**. I commit seven days a week to mastering self-supervised learning and objective-driven AI.
+My research interests are centered around my goal to develop **human-level AI**. Hence, I mostly focus on objective-driven AI (ODAI) and self-supervised learning applied within autonomous AI systems.
 
-Post-masters (Feb 2024), I aim to pursue a PhD in advanced (autonomous) machine intelligence while working full-time. I've shared insights in talks on [A Path Towards Autonomous Machine Intelligence](https://openreview.net/pdf?id=BZ5a1r-kVsf) covering topics from Latent-Variable Energy-Based Models turning neural nets to one-to-many mappings to scalable self-supervised learning via methods like [VICReg](https://arxiv.org/abs/2105.04906). I applied the aforementioned methods in AI for healthcare and microscopy image denoising, achieving promising results that are currently confidential and awaiting publication.
+I aim to pursue a PhD in advanced (autonomous) machine intelligence while working full-time.
+
+I've shared insights in talks on [A Path Towards Autonomous Machine Intelligence](https://openreview.net/pdf?id=BZ5a1r-kVsf) covering topics from Latent-Variable Energy-Based Models turning neural nets to one-to-many mappings to scalable self-supervised learning via methods like [VICReg](https://arxiv.org/abs/2105.04906). I applied the aforementioned methods in AI for healthcare and microscopy image denoising, achieving promising results that are currently confidential and awaiting publication.
+
+<img src="../../../images/icons/download.svg" alt="Download Icon" height="20">View my CV [here](https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link).
 {style="text-align: justify;"}
