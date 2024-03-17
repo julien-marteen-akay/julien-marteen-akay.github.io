@@ -64,13 +64,10 @@ social:
 highlight_name: true
 ---
 
-Hi! I'm Julien Marteen Akay, a data scientist in industry and deep learning research associate in academia.  
+Hi! I'm Julien Marteen Akay, a data scientist in industry and deep learning research associate in academia. View my CV [here](https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link).
 
 My research interests are centered around my goal to develop **human-level AI**. Hence, I mostly focus on objective-driven AI (ODAI) and self-supervised learning applied within autonomous AI systems.
-
-I aim to pursue a PhD in advanced (autonomous) machine intelligence while working full-time.
+Moreover, I aim to pursue a PhD in advanced (autonomous) machine intelligence while working full-time.
 
 I've shared insights in talks on [A Path Towards Autonomous Machine Intelligence](https://openreview.net/pdf?id=BZ5a1r-kVsf) covering topics from Latent-Variable Energy-Based Models turning neural nets to one-to-many mappings to scalable self-supervised learning via methods like [VICReg](https://arxiv.org/abs/2105.04906). I applied the aforementioned methods in AI for healthcare and microscopy image denoising, achieving promising results that are currently confidential and awaiting publication.
-
-<img src="../../../images/icons/download.svg" alt="Download Icon" height="20">View my CV [here](https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link).
 {style="text-align: justify;"}
