@@ -7,7 +7,6 @@
 # **FULL INFO**: I followed this [Tutorial](https://docs.hugoblox.com/tutorial/resume/) to customize the website.
 # **FULL INFO**: I followed this [Tutorial](https://docs.hugoblox.com/tutorial/resume/) to customize the website.
 ---
-[![Screenshot](./preview.png)](https://hugoblox.com/templates/)
 
 The Hugo **Academic Resumé Template** empowers you to easily create your job-winning online resumé, showcase your academic publications, and create online courses or knowledge bases to grow your audience.
 
