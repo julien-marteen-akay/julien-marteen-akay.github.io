@@ -77,6 +77,9 @@ sections:
         {{% callout note %}}
         Quickly discover relevant content by [filtering publications](./publication/).
         {{% /callout %}}
+      count: 3
+      order: desc
+      offset: 0
       filters:
         folders:
           - publication
