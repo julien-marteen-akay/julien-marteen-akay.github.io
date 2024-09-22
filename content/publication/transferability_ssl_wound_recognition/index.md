@@ -73,17 +73,18 @@ url_source: 'https://link.springer.com/chapter/10.1007/978-3-031-72353-7_31#cite
 #   E.g. `slides: "example"` references `content/slides/example/index.md`.
 #   Otherwise, set `slides: ""`.
 #slides: example
+
+
+
+# <PLACE BELOW '---'>, I.E. MARKDOWN CONTENT
+#{{% callout note %}}
+#Click the _Cite_ button above to demo the feature to enable visitors to import publication metadata into their reference management software.
+#{{% /callout %}}
+ 
+#{{% callout note %}}
+#Create your slides in Markdown - click the _Slides_ button to check out the example.
+#{{% /callout %}}
+
+#Add the publication's **full text** or **supplementary notes** here. You can use rich formatting such as including [code, math, and images](https://docs.hugoblox.com/content/writing-markdown-latex/).
+# </PLACE BELOW '---'>
 ---
-
-[//]: # (This may be the most platform independent comment, see here: https://stackoverflow.com/questions/4823468/comments-in-markdown)
-
-[//]: # ( {{% callout note %}}
-Click the _Cite_ button above to demo the feature to enable visitors to import publication metadata into their reference management software.
-{{% /callout %}} )
-
-[//]: # ( 
-{{% callout note %}}
-Create your slides in Markdown - click the _Slides_ button to check out the example.
-{{% /callout %}} )
-
-Add the publication's **full text** or **supplementary notes** here. You can use rich formatting such as including [code, math, and images](https://docs.hugoblox.com/content/writing-markdown-latex/).
