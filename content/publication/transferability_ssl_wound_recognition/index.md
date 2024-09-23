@@ -43,13 +43,13 @@ featured: true
 # - name: Custom Link
 #   url: http://example.org
 
-url_pdf: 'https://link.springer.com/chapter/10.1007/978-3-031-72353-7_31#citeas'
+url_pdf: 'https://link.springer.com/content/pdf/10.1007/978-3-031-72353-7.pdf'
 url_code: 'https://github.com/julien-marteen-akay/Transferability-SSL-Wound-Recognition'
 #url_dataset: 'https://github.com/HugoBlox/hugo-blox-builder'
 #url_poster: ''
 #url_project: ''
 #url_slides: ''
-url_source: 'https://link.springer.com/chapter/10.1007/978-3-031-72353-7_31#citeas'
+url_source: 'https://link.springer.com/chapter/10.1007/978-3-031-72353-7_31'
 #url_video: 'https://youtube.com'
 
 # Featured image
