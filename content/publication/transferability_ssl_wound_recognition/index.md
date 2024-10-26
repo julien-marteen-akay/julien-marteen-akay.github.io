@@ -1,5 +1,5 @@
 ---
-title: 'Enhancing Chronic Wound Image Recognition with Non-Contrastive Self-Supervised Learning'
+title: 'Transferability of Non-Contrastive Self-Supervised Learning to Chronic Wound Image Recognition'
 
 # Authors
 # If you created a profile for a user (e.g. the default `admin` user), write the username (folder name) here
