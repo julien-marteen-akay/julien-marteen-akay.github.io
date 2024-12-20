@@ -52,7 +52,7 @@ social:
   - icon: x-twitter
     icon_pack: fab
     link: https://x.com/julien_marteen
-    label: Follow me on Twitter
+    label: Follow me on X
   - icon: github
     icon_pack: fab
     link: https://github.com/julien-marteen-akay
