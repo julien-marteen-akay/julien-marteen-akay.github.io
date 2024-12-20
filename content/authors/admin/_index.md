@@ -49,13 +49,16 @@ social:
   - icon: medium
     icon_pack: fab
     link: https://medium.com/@julien.marteen.akay
-  - icon: twitter
+  - icon: x-twitter
     icon_pack: fab
-    link: https://twitter.com/julien_marteen
+    link: https://x.com/julien_marteen
     label: Follow me on Twitter
   - icon: github
     icon_pack: fab
     link: https://github.com/julien-marteen-akay
+  - icon: orcid
+    icon_pack: ai
+    link: https://orcid.org/0009-0003-7639-5627
   - icon: cv
     icon_pack: ai
     link: https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link
