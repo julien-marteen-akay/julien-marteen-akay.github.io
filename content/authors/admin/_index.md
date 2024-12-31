@@ -43,28 +43,52 @@ social:
   - icon: envelope
     icon_pack: fas
     link: "mailto:julien.marteen.akay@gmail.com"
+    alt_text: "Send an email to Julien Marteen Akay"
   - icon: linkedin
     icon_pack: fab
     link: https://www.linkedin.com/in/julien-marteen-akay
+    alt_text: "Visit Julien Marteen Akay's LinkedIn profile"
   - icon: medium
     icon_pack: fab
     link: https://medium.com/@julien.marteen.akay
+    alt_text: "Read Julien Marteen Akay's Medium articles"
   - icon: x-twitter
     icon_pack: fab
     link: https://x.com/julien_marteen
+    alt_text: "Follow Julien Marteen Akay on X"
     label: Follow me on X
   - icon: github
     icon_pack: fab
     link: https://github.com/julien-marteen-akay
+    alt_text: "Visit Julien Marteen Akay's GitHub profile"
   - icon: orcid
     icon_pack: ai
     link: https://orcid.org/0009-0003-7639-5627
+    alt_text: "View Julien Marteen Akay's ORCID profile"
   - icon: cv
     icon_pack: ai
     link: https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link
+    alt_text: "Download Julien Marteen Akay's CV"
 
 # Highlight the author in author lists? (true/false)
 highlight_name: true
+
+# Meta description for SEO
+description: >
+  Personal website of Julien Marteen Akay, a Machine Learning Research Engineer in industry
+  and AI researcher in academia specializing in Objective-Driven AI, Autonomous Machine Intelligence
+  and Self-Supervised Learning.
+
+# Schema.org structured data for SEO
+schema:
+  - "@context": "https://schema.org"
+    "@type": "Person"
+    name: "Julien Marteen Akay"
+    jobTitle: ["Machine Learning Research Engineer", "Research Associate"]
+    worksFor: ["up2parts GmbH", "Hochschule Bielefeld – University of Applied Sciences and Arts"]
+    sameAs:
+      - "https://www.linkedin.com/in/julien-marteen-akay"
+      - "https://github.com/julien-marteen-akay"
 ---
 
 Hi! I'm Julien Marteen Akay, an ML research engineer in industry and deep learning research associate in academia. View my CV [here](https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link).
