@@ -4,7 +4,7 @@
 # This file is formatted using YAML syntax - learn more at https://learnxinyminutes.com/docs/yaml/
 
 title: Julien Marteen Akay # Website name
-baseURL: 'https://example.com/' # Website URL
+baseURL: 'https://julien-marteen-akay.github.io/' # Website URL
 
 ############################
 ## LANGUAGE
@@ -28,7 +28,7 @@ footnotereturnlinkcontents: <sup>^</sup>
 ignoreFiles: [\.ipynb$, .ipynb_checkpoints$, \.Rmd$, \.Rmarkdown$, _cache$]
 permalinks:
   event: '/talk/:slug/'
-  tags: '/tag/:slug/'
+  # tags: '/tag/:slug/' # Commented out to disable tags
   categories: '/category/:slug/'
   publication_types: '/publication-type/:slug/'
 disableAliases: true
@@ -41,10 +41,10 @@ imaging:
   anchor: smart
 timeout: 600000
 taxonomies:
-  tag: tags
   category: categories
   publication_type: publication_types
   author: authors
+  # tag: tags # Commented out to disable tags
 markup:
   _merge: deep
 related:
@@ -60,5 +60,7 @@ security:
   _merge: deep
 sitemap:
   _merge: deep
+  changefreq: 'daily'
+  priority: 1.0
 minify:
   _merge: deep
