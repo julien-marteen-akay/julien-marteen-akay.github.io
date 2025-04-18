@@ -31,38 +31,41 @@ const detailedBio = `Hi! I'm Julien Marteen Akay, an ML research engineer in ind
 
 ---
 <BaseLayout title={title} description={description}>
-  <div class="space-y-12"> {/* Reduced spacing */}
-    {/* Hero Section (remains grid) */}
-    <section class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start pt-8">
-      {/* Avatar Column */}
-      <div class="md:col-span-1 flex justify-center md:justify-start">
-        <img src={avatarSrc} alt="Julien Marteen Akay" class="w-40 h-40 md:w-full md:h-auto max-w-xs rounded-lg border-4 border-accent_blue object-cover shadow-lg">
-      </div>
-      {/* Bio Column */}
-      <div class="md:col-span-2 space-y-4">
-        <h1 class="text-4xl font-bold text-accent_cyan">About Me</h1>
-        <p class="text-lg text-text_secondary">{bio}</p>
-        <div class="prose prose-invert max-w-none text-text_primary" set:html={detailedBio.replace(/\*\*(.*?)\*\*/g, '<strong class=\"text-accent-yellow\">$1</strong>').replace(/\\\[(.*?)\\]\\((.*?)\\)/g, '<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-accent-blue hover:underline\">$1</a>')} />
-        <div class="pt-4">
-          <Button href={cvLink} target="_blank" color="cyan" text="View CV" variant="solid" />
-        </div>
-        {/* Social Links moved here (inline with bio) */}
-        <div class="pt-6 border-t border-border_dark">
-          <h3 class="text-lg font-semibold text-text_secondary mb-3">Connect:</h3>
-          <div class="flex flex-wrap gap-4">
-            {socialLinks.map(link => (
-              <a 
-                href={link.href} 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                aria-label={link.label}
-                title={link.label} 
-                class="text-text_secondary hover:text-accent_cyan transition-colors duration-200"
-              >
-                <span class="sr-only">{link.label}</span>
-                <Icon name={link.icon} class="w-6 h-6" />
-              </a>
-            ))}
+  <div class="space-y-12">
+    {/* Updated Hero Section: Using float for text wrap */}
+    <section class="pt-8">
+      <div class="clearfix"> 
+        <img 
+          src={avatarSrc} 
+          alt="Julien Marteen Akay" 
+          class="w-40 h-40 rounded-lg border-4 border-accent_blue object-cover shadow-lg mb-4 md:float-left md:mr-8 md:mb-4 md:max-w-[180px] lg:max-w-[220px]"
+        />
+        {/* Bio content now wraps around the floated image */}
+        <div class="space-y-4">
+          <h1 class="text-4xl font-bold text-accent_cyan">About Me</h1>
+          <p class="text-lg text-text_secondary_light dark:text-text_secondary_dark">{bio}</p>
+          <div class="prose dark:prose-invert max-w-none text-text_primary_light dark:text-text_primary_dark" set:html={detailedBio.replace(/\*\*(.*?)\*\*/g, '<strong class=\"text-accent-yellow\">$1</strong>').replace(/\\\[(.*?)\\]\\((.*?)\\)/g, '<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-accent-blue hover:underline\">$1</a>')} />
+          <div class="pt-4">
+            <Button href={cvLink} target="_blank" color="cyan" text="View CV" variant="solid" />
+          </div>
+          {/* Social Links remain inline with bio */}
+          <div class="pt-6 border-t border-border_light dark:border-border_dark">
+            <h3 class="text-lg font-semibold text-text_secondary mb-3">Connect:</h3>
+            <div class="flex flex-wrap gap-4">
+              {socialLinks.map(link => (
+                <a 
+                  href={link.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label={link.label}
+                  title={link.label} 
+                  class="text-text_secondary hover:text-accent_cyan transition-colors duration-200"
+                >
+                  <span class="sr-only">{link.label}</span>
+                  <Icon name={link.icon} class="w-6 h-6" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
