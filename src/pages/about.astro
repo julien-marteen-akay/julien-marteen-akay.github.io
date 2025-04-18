@@ -31,8 +31,8 @@ const detailedBio = `Hi! I'm Julien Marteen Akay, an ML research engineer in ind
 
 ---
 <BaseLayout title={title} description={description}>
-  <div class="space-y-16"> {/* Increased spacing */}
-    {/* Restructured Hero Section */}
+  <div class="space-y-12"> {/* Reduced spacing */}
+    {/* Hero Section (remains grid) */}
     <section class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start pt-8">
       {/* Avatar Column */}
       <div class="md:col-span-1 flex justify-center md:justify-start">
@@ -68,33 +68,33 @@ const detailedBio = `Hi! I'm Julien Marteen Akay, an ML research engineer in ind
       </div>
     </section>
 
-    {/* Interests Section - styled as cards */}
-    <section>
-      <h2 class="text-3xl font-semibold mb-6 text-accent_yellow">Research Interests</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-        {interests.map(interest => (
-          <div class="p-4 border border-border_dark rounded-lg bg-dark text-center shadow-md">
-            <p class="text-text_primary">{interest}</p>
-          </div>
-        ))}
+    {/* Combined Interests & Education Section */}
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
+      {/* Interests Column */}
+      <div>
+        <h2 class="text-2xl font-semibold mb-4 text-accent_yellow border-b border-border_dark pb-2">Research Interests</h2>
+        <ul class="space-y-2 list-disc list-inside text-text_primary_light dark:text-text_primary_dark">
+          {interests.map(interest => (
+            <li>{interest}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Education Column */}
+      <div>
+        <h2 class="text-2xl font-semibold mb-4 text-accent_yellow border-b border-border_dark pb-2">Education</h2>
+        <div class="space-y-4">
+          {education.map(edu => (
+            <div class="p-3 border border-transparent rounded-md">
+              {/* Simplified card style */}
+              <h3 class="text-lg font-medium text-accent_cyan">{edu.course}</h3>
+              <p class="text-text_secondary_light dark:text-text_secondary_dark text-sm">{edu.institution}</p>
+              <p class="text-xs text-text_secondary_light/70 dark:text-text_secondary_dark/70 mt-0.5">{edu.year}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
-
-    {/* Education Section - styled as cards */}
-    <section>
-      <h2 class="text-3xl font-semibold mb-6 text-accent_yellow">Education</h2>
-      <div class="space-y-6">
-        {education.map(edu => (
-          <div class="p-6 border border-border_dark rounded-lg bg-dark shadow-md">
-            <h3 class="text-xl font-medium text-accent_cyan mb-1">{edu.course}</h3>
-            <p class="text-text_secondary">{edu.institution}</p>
-            <p class="text-sm text-text_secondary/70 mt-1">{edu.year}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    {/* Removed original Connect section, moved links to bio area */}
 
   </div>
 </BaseLayout> 

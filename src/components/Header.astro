@@ -20,21 +20,35 @@ const currentPath = Astro.url.pathname;
     <div class="flex items-center space-x-4 md:space-x-6">
       {/* Navigation Links */}
       <ul class="flex space-x-4 md:space-x-6">
-        {navLinks.map(link => (
-          <li>
-            <a 
-              href={link.href} 
-              class:list={[
-                "text-lg transition-colors duration-200 ease-in-out text-text_secondary_light dark:text-text_secondary_dark", // Base text colors
-                currentPath === link.href 
-                  ? "text-accent_magenta font-semibold dark:text-accent_magenta" // Active link style
-                  : "hover:text-accent_cyan dark:hover:text-accent_cyan" // Non-active hover style
-              ]}
-            >
-              {link.name}
-            </a>
-          </li>
-        ))}
+        {navLinks.map(link => {
+          const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href + '/'));
+          return (
+            <li>
+              <a 
+                href={link.href} 
+                class:list={[
+                  "relative text-lg transition-colors duration-200 ease-in-out group", // Added relative and group
+                  "text-text_secondary_light dark:text-text_secondary_dark", // Base colors
+                  isActive
+                    ? "text-accent_magenta font-semibold dark:text-accent_magenta" // Active color
+                    : "hover:text-accent_cyan dark:hover:text-accent_cyan" // Hover color
+                ]}
+              >
+                {link.name}
+                {/* Underline for Active State */}
+                {isActive && (
+                  <span class="absolute bottom-[-4px] left-0 w-full h-0.5 bg-accent_magenta"></span>
+                )}
+                {/* Animated Underline for Hover State (non-active links) */}
+                {!isActive && (
+                  <span class="absolute bottom-[-4px] left-0 w-full h-0.5 bg-accent_cyan 
+                             scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left">
+                  </span>
+                )}
+              </a>
+            </li>
+          );
+        })}
       </ul>
       {/* Theme Toggle Button */}
       <ThemeToggleButton />
