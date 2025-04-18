@@ -11,8 +11,8 @@ const navLinks = [
 
 const currentPath = Astro.url.pathname;
 ---
-<header class="sticky top-0 z-50 py-3 px-4 backdrop-blur-lg border-b bg-light/80 border-gray-200 dark:bg-dark/80 dark:border-border_dark transition-colors duration-300">
-  {/* Updated background/border colors */}
+<header class="sticky top-0 z-50 py-3 px-4 backdrop-blur-lg border-b bg-light/90 border-border_light_light dark:bg-dark/80 dark:border-border_dark transition-colors duration-300">
+  {/* Updated background/border colors for light and dark */}
   <nav class="container mx-auto flex justify-between items-center max-w-4xl">
     <a href="/" class="text-2xl font-bold text-accent_yellow hover:text-accent_cyan transition-colors duration-300 ease-in-out">
       Julien Marteen Akay
@@ -25,7 +25,7 @@ const currentPath = Astro.url.pathname;
             <a 
               href={link.href} 
               class:list={[
-                "text-lg transition-colors duration-200 ease-in-out text-gray-700 dark:text-text_secondary", // Base text colors
+                "text-lg transition-colors duration-200 ease-in-out text-text_secondary_light dark:text-text_secondary_dark", // Base text colors
                 currentPath === link.href 
                   ? "text-accent_magenta font-semibold dark:text-accent_magenta" // Active link style
                   : "hover:text-accent_cyan dark:hover:text-accent_cyan" // Non-active hover style

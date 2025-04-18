@@ -43,27 +43,30 @@ const colorMap: Record<ColorProp, PaletteKey> = {
 const paletteKey: PaletteKey = colorMap[color as ColorProp] || 'accent_cyan'; 
 
 // Base styles with transitions for smooth effects
-const baseStyles = "inline-block px-6 py-2 rounded-md font-semibold transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-dark text-center active:scale-[0.98]";
+const baseStyles = "inline-block px-6 py-2 rounded-md font-semibold transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-light dark:focus:ring-offset-dark text-center active:scale-[0.98]";
 
-// Color styles using new palette names
+// Color styles with light/dark text considerations
 const colorStyles: Record<'solid' | 'outline', Record<PaletteKey, string>> = {
   solid: {
-    accent_cyan:    `bg-accent_cyan text-dark hover:bg-opacity-90 focus:ring-accent_cyan`,
-    accent_yellow:  `bg-accent_yellow text-dark hover:bg-opacity-90 focus:ring-accent_yellow`,
+    // Use dark text on light/bright accents (cyan, yellow, green)
+    accent_cyan:    `bg-accent_cyan text-text_primary_light hover:bg-opacity-90 focus:ring-accent_cyan`,
+    accent_yellow:  `bg-accent_yellow text-text_primary_light hover:bg-opacity-90 focus:ring-accent_yellow`,
+    accent_green:   `bg-accent_green text-text_primary_light hover:bg-opacity-90 focus:ring-accent_green`,
+    // Use light text on darker accents (magenta, blue, orange, red)
     accent_magenta: `bg-accent_magenta text-light hover:bg-opacity-90 focus:ring-accent_magenta`,
     accent_blue:    `bg-accent_blue text-light hover:bg-opacity-90 focus:ring-accent_blue`,
-    accent_orange:  `bg-accent_orange text-dark hover:bg-opacity-90 focus:ring-accent_orange`,
-    accent_green:   `bg-accent_green text-dark hover:bg-opacity-90 focus:ring-accent_green`,
+    accent_orange:  `bg-accent_orange text-light hover:bg-opacity-90 focus:ring-accent_orange`,
     accent_red:     `bg-accent_red text-light hover:bg-opacity-90 focus:ring-accent_red`,
   },
   outline: {
-    accent_cyan:    `border-2 border-accent_cyan text-accent_cyan hover:bg-accent_cyan/10 focus:ring-accent_cyan`,
-    accent_yellow:  `border-2 border-accent_yellow text-accent_yellow hover:bg-accent_yellow/10 focus:ring-accent_yellow`,
-    accent_magenta: `border-2 border-accent_magenta text-accent_magenta hover:bg-accent_magenta/10 focus:ring-accent_magenta`,
-    accent_blue:    `border-2 border-accent_blue text-accent_blue hover:bg-accent_blue/10 focus:ring-accent_blue`,
-    accent_orange:  `border-2 border-accent_orange text-accent_orange hover:bg-accent_orange/10 focus:ring-accent_orange`,
-    accent_green:   `border-2 border-accent_green text-accent_green hover:bg-accent_green/10 focus:ring-accent_green`,
-    accent_red:     `border-2 border-accent_red text-accent_red hover:bg-accent_red/10 focus:ring-accent_red`,
+    // Text color is already the accent color, hover adds subtle bg
+    accent_cyan:    `border-2 border-accent_cyan text-accent_cyan hover:bg-accent_cyan/10 dark:hover:bg-accent_cyan/20 focus:ring-accent_cyan`,
+    accent_yellow:  `border-2 border-accent_yellow text-accent_yellow hover:bg-accent_yellow/10 dark:hover:bg-accent_yellow/20 focus:ring-accent_yellow`,
+    accent_magenta: `border-2 border-accent_magenta text-accent_magenta hover:bg-accent_magenta/10 dark:hover:bg-accent_magenta/20 focus:ring-accent_magenta`,
+    accent_blue:    `border-2 border-accent_blue text-accent_blue hover:bg-accent_blue/10 dark:hover:bg-accent_blue/20 focus:ring-accent_blue`,
+    accent_orange:  `border-2 border-accent_orange text-accent_orange hover:bg-accent_orange/10 dark:hover:bg-accent_orange/20 focus:ring-accent_orange`,
+    accent_green:   `border-2 border-accent_green text-accent_green hover:bg-accent_green/10 dark:hover:bg-accent_green/20 focus:ring-accent_green`,
+    accent_red:     `border-2 border-accent_red text-accent_red hover:bg-accent_red/10 dark:hover:bg-accent_red/20 focus:ring-accent_red`,
   }
 };
 
