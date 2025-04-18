@@ -1,11 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
+import { Icon } from 'astro-icon/components';
 
 const title = "About Me";
 const description = "Learn more about Julien Marteen Akay, his research interests, education, and background.";
 
-// Extracted data from backup/content/authors/admin/_index.md
+// Extracted data
 const bio = "My research is centered on advancing human-level AI through a fusion of self-supervised learning and Objective-Driven AI (ODAI).";
 const interests = [
   "Advanced Machine Intelligence",
@@ -17,67 +18,83 @@ const education = [
   { course: "B.Eng. in Mechanical Engineering", institution: "Hochschule Bielefeld - University of Applied Sciences and Arts", year: 2021 }
 ];
 const socialLinks = [
-  { href: "mailto:julien.marteen.akay@gmail.com", label: "Email", icon: "envelope" }, // Placeholder icon name
-  { href: "https://www.linkedin.com/in/julien-marteen-akay", label: "LinkedIn", icon: "linkedin" }, // Placeholder icon name
-  { href: "https://medium.com/@julien.marteen.akay", label: "Medium", icon: "medium" }, // Placeholder icon name
-  { href: "https://x.com/julien_marteen", label: "X (Twitter)", icon: "x-twitter" }, // Placeholder icon name
-  { href: "https://github.com/julien-marteen-akay", label: "GitHub", icon: "github" }, // Placeholder icon name
-  { href: "https://orcid.org/0009-0003-7639-5627", label: "ORCID", icon: "orcid" } // Placeholder icon name
+  { href: "mailto:julien.marteen.akay@gmail.com", label: "Email", icon: "mdi:envelope" },
+  { href: "https://www.linkedin.com/in/julien-marteen-akay", label: "LinkedIn", icon: "mdi:linkedin" },
+  { href: "https://medium.com/@julien.marteen.akay", label: "Medium", icon: "mdi:medium" },
+  { href: "https://x.com/julien_marteen", label: "X (Twitter)", icon: "simple-icons:x" },
+  { href: "https://github.com/julien-marteen-akay", label: "GitHub", icon: "mdi:github" },
+  { href: "https://orcid.org/0009-0003-7639-5627", label: "ORCID", icon: "academicons:orcid" }
 ];
 const cvLink = "https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link";
-const avatarSrc = "/avatar.jpg"; // Assuming avatar is in public/
+const avatarSrc = "/avatar.jpg"; 
 const detailedBio = `Hi! I'm Julien Marteen Akay, an ML research engineer in industry and deep learning research associate in academia. My research interests revolve around the goal of developing **human-level AI**. I focus on objective-driven AI (ODAI) and self-supervised learning (SSL), particularly in the context of autonomous AI systems. Additionally, I plan to pursue a PhD in advanced (autonomous) machine intelligence while continuing to work full-time in the industry. Inspired by [A Path Towards Autonomous Machine Intelligence](https://openreview.net/pdf?id=BZ5a1r-kVsf), I've enjoyed presenting talks on topics like latent-variable energy-based models, which enable neural networks to handle one-to-many mappings, and scalable SSL approaches such as [VICReg](https://arxiv.org/abs/2105.04906). I've applied these techniques to areas like healthcare AI and microscopy image denoising, and I'm excited to explore better approaches for achieving truly autonomous AI.`;
 
 ---
 <BaseLayout title={title} description={description}>
-  <div class="space-y-12">
-    <section class="flex flex-col md:flex-row items-center md:items-start gap-8">
-      <img src={avatarSrc} alt="Julien Marteen Akay" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-retro-magenta object-cover flex-shrink-0">
-      <div class="text-center md:text-left">
-        <h1 class="text-4xl font-bold mb-4 text-retro-cyan">About Me</h1>
-        <p class="text-lg text-gray-300 mb-4">{bio}</p>
-        <div class="prose prose-invert max-w-none text-gray-300" set:html={detailedBio.replace(/\\*\\*(.*?)\\*\\*/g, '<strong class=\"text-retro-yellow\">$1</strong>').replace(/\\\[(.*?)\\]\\((.*?)\\)/g, '<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-retro-blue hover:underline\">$1</a>')} />
-        <div class="mt-6 flex justify-center md:justify-start">
-          <Button href={cvLink} target="_blank" color="cyan" text="View CV" />
+  <div class="space-y-16"> {/* Increased spacing */}
+    {/* Restructured Hero Section */}
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-12 items-start pt-8">
+      {/* Avatar Column */}
+      <div class="md:col-span-1 flex justify-center md:justify-start">
+        <img src={avatarSrc} alt="Julien Marteen Akay" class="w-40 h-40 md:w-full md:h-auto max-w-xs rounded-lg border-4 border-accent_magenta object-cover shadow-lg">
+      </div>
+      {/* Bio Column */}
+      <div class="md:col-span-2 space-y-4">
+        <h1 class="text-4xl font-bold text-accent_cyan">About Me</h1>
+        <p class="text-lg text-text_secondary">{bio}</p>
+        <div class="prose prose-invert max-w-none text-text_primary" set:html={detailedBio.replace(/\*\*(.*?)\*\*/g, '<strong class=\"text-accent-yellow\">$1</strong>').replace(/\\\[(.*?)\\]\\((.*?)\\)/g, '<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-accent-blue hover:underline\">$1</a>')} />
+        <div class="pt-4">
+          <Button href={cvLink} target="_blank" color="cyan" text="View CV" variant="solid" />
+        </div>
+        {/* Social Links moved here (inline with bio) */}
+        <div class="pt-6 border-t border-border_dark">
+          <h3 class="text-lg font-semibold text-text_secondary mb-3">Connect:</h3>
+          <div class="flex flex-wrap gap-4">
+            {socialLinks.map(link => (
+              <a 
+                href={link.href} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label={link.label}
+                title={link.label} 
+                class="text-text_secondary hover:text-accent_cyan transition-colors duration-200"
+              >
+                <span class="sr-only">{link.label}</span>
+                <Icon name={link.icon} class="w-6 h-6" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
 
+    {/* Interests Section - styled as cards */}
     <section>
-      <h2 class="text-3xl font-semibold mb-4 border-b-2 border-retro-orange pb-2">Research Interests</h2>
-      <ul class="list-disc list-inside space-y-2 text-gray-300">
+      <h2 class="text-3xl font-semibold mb-6 text-accent_yellow">Research Interests</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {interests.map(interest => (
-          <li>{interest}</li>
-        ))}
-      </ul>
-    </section>
-
-    <section>
-      <h2 class="text-3xl font-semibold mb-4 border-b-2 border-retro-green pb-2">Education</h2>
-      <div class="space-y-4">
-        {education.map(edu => (
-          <div class="p-4 border border-gray-700 rounded-lg bg-gray-800/50">
-            <h3 class="text-xl font-medium text-retro-yellow">{edu.course}</h3>
-            <p class="text-gray-400">{edu.institution}</p>
-            <p class="text-gray-500 text-sm">{edu.year}</p>
+          <div class="p-4 border border-border_dark rounded-lg bg-dark text-center shadow-md">
+            <p class="text-text_primary">{interest}</p>
           </div>
         ))}
       </div>
     </section>
 
+    {/* Education Section - styled as cards */}
     <section>
-      <h2 class="text-3xl font-semibold mb-4 border-b-2 border-retro-red pb-2">Connect</h2>
-      <ul class="flex flex-wrap gap-4">
-        {socialLinks.map(link => (
-          <li>
-            <a href={link.href} target="_blank" rel="noopener noreferrer" class="text-retro-blue hover:underline hover:text-retro-magenta transition-colors duration-200">
-              {/* TODO: Replace text with actual icons */}
-              {link.label}
-            </a>
-          </li>
+      <h2 class="text-3xl font-semibold mb-6 text-accent_yellow">Education</h2>
+      <div class="space-y-6">
+        {education.map(edu => (
+          <div class="p-6 border border-border_dark rounded-lg bg-dark shadow-md">
+            <h3 class="text-xl font-medium text-accent_cyan mb-1">{edu.course}</h3>
+            <p class="text-text_secondary">{edu.institution}</p>
+            <p class="text-sm text-text_secondary/70 mt-1">{edu.year}</p>
+          </div>
         ))}
-      </ul>
-      <p class="mt-4 text-sm text-gray-500">Note: Icons for social links will be added later.</p>
+      </div>
     </section>
+
+    {/* Removed original Connect section, moved links to bio area */}
+
   </div>
 </BaseLayout> 

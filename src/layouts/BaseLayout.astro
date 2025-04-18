@@ -5,7 +5,7 @@ import '../styles/global.css';
 // Import components
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-// import MovingBackground from '../components/MovingBackground.astro'; // Keep commented out
+import MovingBackground from '../components/MovingBackground.astro'; // Import background
 
 // Define props the layout accepts (e.g., title, description for SEO)
 interface Props {
@@ -34,13 +34,16 @@ const {
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 	</head>
-	<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col font-sans">
-		{/* <MovingBackground /> Keep commented out */}
-		<Header />
-		<main class="flex-grow container mx-auto px-4 py-8 w-full max-w-4xl">
-			<slot /> {/* Page content will be injected here */}
-		</main>
-		<Footer />
+	<body class="bg-light text-gray-800 dark:bg-dark dark:text-text_primary min-h-screen flex flex-col font-sans transition-colors duration-300">
+		{/* Updated body classes for light/dark mode using new palette */}
+		<MovingBackground /> {/* Add the background component */}
+		<div class="relative z-10 flex flex-col min-h-screen"> {/* Ensure content is above background */} 
+			<Header />
+			<main class="flex-grow container mx-auto px-4 py-8 w-full max-w-4xl">
+				<slot /> {/* Page content will be injected here */}
+			</main>
+			<Footer />
+		</div>
 	</body>
 </html>
 <style is:global>
@@ -48,5 +51,8 @@ const {
 	html {
 		font-family: 'Inter', sans-serif;
 	}
-	/* Add other global styles if needed */
+	
+	/* REMOVED forced dark theme styles */
+	/* Now relying on Tailwind utility classes on body */
+
 </style> 

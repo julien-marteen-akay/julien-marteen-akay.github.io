@@ -13,43 +13,63 @@ interface Props {
   class?: string | Record<any, any> | Iterable<any>; // Keep class for styling
 }
 
+// Define the allowed color prop values
+type ColorProp = 'cyan' | 'yellow' | 'magenta' | 'blue' | 'orange' | 'green' | 'red';
+// Define the keys used in the colorStyles object (our palette names)
+type PaletteKey = 'accent_cyan' | 'accent_yellow' | 'accent_magenta' | 'accent_blue' | 'accent_orange' | 'accent_green' | 'accent_red';
+
 const { 
   text,
   href,
-  color = 'cyan',
+  color = 'cyan', // Keep prop names simple (cyan, yellow, magenta)
   variant = 'solid',
   target,
   rel,
   type,
   class: className // Use className for the class prop
-} = Astro.props;
+} = Astro.props as Props;
+
+// Explicitly type the color map
+const colorMap: Record<ColorProp, PaletteKey> = {
+  cyan: 'accent_cyan',
+  yellow: 'accent_yellow',
+  magenta: 'accent_magenta',
+  blue: 'accent_blue',
+  orange: 'accent_orange',
+  green: 'accent_green',
+  red: 'accent_red',
+};
+// Ensure the resulting key is of the correct type
+const paletteKey: PaletteKey = colorMap[color as ColorProp] || 'accent_cyan'; 
 
 // Base styles with transitions for smooth effects
-const baseStyles = "inline-block px-6 py-2 rounded-md font-semibold transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 text-center active:scale-[0.98]";
+const baseStyles = "inline-block px-6 py-2 rounded-md font-semibold transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-dark text-center active:scale-[0.98]";
 
-// Color and variant specific styles including hover states
-const colorStyles = {
+// Color styles using new palette names
+const colorStyles: Record<'solid' | 'outline', Record<PaletteKey, string>> = {
   solid: {
-    cyan:    'bg-retro-cyan text-gray-900 hover:bg-opacity-90 focus:ring-retro-cyan',
-    yellow:  'bg-retro-yellow text-gray-900 hover:bg-opacity-90 focus:ring-retro-yellow',
-    magenta: 'bg-retro-magenta text-gray-900 hover:bg-opacity-90 focus:ring-retro-magenta',
-    blue:    'bg-retro-blue text-gray-100 hover:bg-opacity-90 focus:ring-retro-blue',
-    orange:  'bg-retro-orange text-gray-900 hover:bg-opacity-90 focus:ring-retro-orange',
-    green:   'bg-retro-green text-gray-900 hover:bg-opacity-90 focus:ring-retro-green',
-    red:     'bg-retro-red text-gray-100 hover:bg-opacity-90 focus:ring-retro-red',
+    accent_cyan:    `bg-accent_cyan text-dark hover:bg-opacity-90 focus:ring-accent_cyan`,
+    accent_yellow:  `bg-accent_yellow text-dark hover:bg-opacity-90 focus:ring-accent_yellow`,
+    accent_magenta: `bg-accent_magenta text-light hover:bg-opacity-90 focus:ring-accent_magenta`,
+    accent_blue:    `bg-accent_blue text-light hover:bg-opacity-90 focus:ring-accent_blue`,
+    accent_orange:  `bg-accent_orange text-dark hover:bg-opacity-90 focus:ring-accent_orange`,
+    accent_green:   `bg-accent_green text-dark hover:bg-opacity-90 focus:ring-accent_green`,
+    accent_red:     `bg-accent_red text-light hover:bg-opacity-90 focus:ring-accent_red`,
   },
   outline: {
-    cyan:    'border-2 border-retro-cyan text-retro-cyan hover:bg-retro-cyan/10 focus:ring-retro-cyan',
-    yellow:  'border-2 border-retro-yellow text-retro-yellow hover:bg-retro-yellow/10 focus:ring-retro-yellow',
-    magenta: 'border-2 border-retro-magenta text-retro-magenta hover:bg-retro-magenta/10 focus:ring-retro-magenta',
-    blue:    'border-2 border-retro-blue text-retro-blue hover:bg-retro-blue/10 focus:ring-retro-blue',
-    orange:  'border-2 border-retro-orange text-retro-orange hover:bg-retro-orange/10 focus:ring-retro-orange',
-    green:   'border-2 border-retro-green text-retro-green hover:bg-retro-green/10 focus:ring-retro-green',
-    red:     'border-2 border-retro-red text-retro-red hover:bg-retro-red/10 focus:ring-retro-red',
+    accent_cyan:    `border-2 border-accent_cyan text-accent_cyan hover:bg-accent_cyan/10 focus:ring-accent_cyan`,
+    accent_yellow:  `border-2 border-accent_yellow text-accent_yellow hover:bg-accent_yellow/10 focus:ring-accent_yellow`,
+    accent_magenta: `border-2 border-accent_magenta text-accent_magenta hover:bg-accent_magenta/10 focus:ring-accent_magenta`,
+    accent_blue:    `border-2 border-accent_blue text-accent_blue hover:bg-accent_blue/10 focus:ring-accent_blue`,
+    accent_orange:  `border-2 border-accent_orange text-accent_orange hover:bg-accent_orange/10 focus:ring-accent_orange`,
+    accent_green:   `border-2 border-accent_green text-accent_green hover:bg-accent_green/10 focus:ring-accent_green`,
+    accent_red:     `border-2 border-accent_red text-accent_red hover:bg-accent_red/10 focus:ring-accent_red`,
   }
 };
 
-const appliedStyles = `${baseStyles} ${colorStyles[variant][color]}`;
+// Access styles using the correctly typed key
+const appliedColorStyle = colorStyles[variant][paletteKey] || colorStyles.solid.accent_cyan;
+const appliedStyles = `${baseStyles} ${appliedColorStyle}`;
 
 // Determine tag based on href presence
 const isLink = href !== undefined;

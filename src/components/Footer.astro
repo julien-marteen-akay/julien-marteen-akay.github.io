@@ -1,12 +1,46 @@
 ---
+import { Icon } from 'astro-icon/components'; // Import Icon component
+
+// Define social links with appropriate icon names from packs
+// (Using mdi, simple-icons, academicons for broad coverage)
+const socialLinks = [
+  { href: "mailto:julien.marteen.akay@gmail.com", label: "Email", icon: "mdi:envelope" },
+  { href: "https://www.linkedin.com/in/julien-marteen-akay", label: "LinkedIn", icon: "mdi:linkedin" },
+  { href: "https://medium.com/@julien.marteen.akay", label: "Medium", icon: "mdi:medium" }, 
+  { href: "https://x.com/julien_marteen", label: "X (Twitter)", icon: "simple-icons:x" }, 
+  { href: "https://github.com/julien-marteen-akay", label: "GitHub", icon: "mdi:github" }, 
+  { href: "https://orcid.org/0009-0003-7639-5627", label: "ORCID", icon: "academicons:orcid" }
+];
+
 const currentYear = new Date().getFullYear();
 ---
-<footer class="mt-auto py-4 px-4 border-t border-gray-700/50 bg-gray-900">
-  <div class="container mx-auto text-center text-gray-500 text-sm max-w-4xl">
-    <p>&copy; {currentYear} Julien Marteen Akay. All rights reserved.</p>
-    <p class="mt-1">
-      Built with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="text-retro-cyan hover:underline">Astro</a> 
-      & <a href="https://tailwindcss.com/" target="_blank" rel="noopener noreferrer" class="text-retro-blue hover:underline">Tailwind CSS</a>.
-    </p>
+<footer class="mt-auto py-8 px-4 border-t border-border_dark bg-dark">
+  <div class="container mx-auto max-w-4xl flex flex-col md:flex-row justify-between items-center gap-6">
+    
+    {/* Social Links Section */}
+    <div class="flex justify-center md:justify-start items-center space-x-4">
+      {socialLinks.map(link => (
+        <a 
+          href={link.href} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          aria-label={link.label}
+          title={link.label} 
+          class="text-text_secondary hover:text-accent_cyan transition-colors duration-200"
+        >
+          <span class="sr-only">{link.label}</span>
+          <Icon name={link.icon} class="w-6 h-6" /> {/* Use Icon component */}
+        </a>
+      ))}
+    </div>
+
+    {/* Copyright Section */}
+    <div class="text-center md:text-right text-text_secondary text-sm">
+      <p>&copy; {currentYear} Julien Marteen Akay</p>
+      <p class="mt-1">
+        Built with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="hover:text-accent_yellow">Astro</a>
+      </p>
+    </div>
+
   </div>
 </footer> 
