@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+
+const pageTitle = "Home";
+const name = "Julien Marteen Akay";
+const role = "Data Science in Industry | Deep Learning in Research"; // Combined roles from profile
+const tagline = "Advancing human-level AI through Self-Supervised Learning and Objective-Driven AI."; // Adapted from bio
+const avatarSrc = "/avatar.jpg"; // Ensure avatar.jpg is in public/
+const cvLink = "https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link"; // From profile
+
+// Remove imports for recent posts/publications as they are no longer displayed
+// const recentPublications = ...
+// const recentPosts = ... 
+---
+<BaseLayout title={pageTitle}>
+  <section class="text-center pt-16 pb-12 min-h-[calc(100vh-150px)] flex flex-col justify-center">
+    {/* Added min-h-screen variant and flex centering for hero */}
+    <img 
+      src={avatarSrc} 
+      alt="Profile picture of Julien Marteen Akay" 
+      class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-retro-magenta mx-auto mb-6 object-cover"
+    />
+    <h1 class="text-4xl md:text-5xl font-bold text-retro-cyan mb-2">{name}</h1>
+    <h2 class="text-2xl md:text-3xl font-semibold text-retro-yellow mb-4">{role}</h2>
+    <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-8">{tagline}</p>
+    <div class="flex justify-center space-x-4">
+      <Button href="/about" text="Learn More" color="cyan" variant="solid" />
+      <Button href={cvLink} target="_blank" text="View CV" color="blue" variant="outline" />
+    </div>
+  </section>
+
+  {/* REMOVED Recent Activity section */}
+
+</BaseLayout> 

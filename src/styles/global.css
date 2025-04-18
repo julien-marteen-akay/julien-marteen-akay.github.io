@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add any custom base styles below */
+body {
+  /* Example: Add a default transition to all elements */
+  /* transition: all 0.2s ease-in-out; */
+} 

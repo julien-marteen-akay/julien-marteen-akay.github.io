@@ -1,0 +1,43 @@
+---
+import ThemeToggleButton from './ThemeToggleButton.astro'; // Import the new component
+
+// Define navigation links
+const navLinks = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Publications", href: "/publications" }, // Added publications link
+  { name: "Blog", href: "/blog" },           // Added blog link
+];
+
+const currentPath = Astro.url.pathname;
+---
+<header class="sticky top-0 z-50 py-3 px-4 backdrop-blur-lg bg-gray-900/70 border-b border-gray-700/50 transition-colors duration-300 dark:bg-gray-900/80 dark:border-gray-700">
+  {/* Adjust background/border slightly for dark mode */}
+  <nav class="container mx-auto flex justify-between items-center max-w-4xl">
+    <a href="/" class="text-2xl font-bold text-retro-yellow hover:text-retro-cyan transition-colors duration-300 ease-in-out">
+      Julien Marteen Akay
+    </a>
+    <div class="flex items-center space-x-4 md:space-x-6">
+      {/* Navigation Links */}
+      <ul class="flex space-x-4 md:space-x-6">
+        {navLinks.map(link => (
+          <li>
+            <a 
+              href={link.href} 
+              class:list={[
+                "text-lg transition-colors duration-200 ease-in-out",
+                currentPath === link.href 
+                  ? "text-retro-magenta font-semibold"
+                  : "text-gray-300 hover:text-retro-cyan"
+              ]}
+            >
+              {link.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+      {/* Theme Toggle Button */}
+      <ThemeToggleButton />
+    </div>
+  </nav>
+</header> 

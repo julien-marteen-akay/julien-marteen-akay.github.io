@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Blog";
+const description = "Blog posts by Julien Marteen Akay.";
+
+// Use Astro.glob() to find all blog post Markdown files
+// Sort by date, newest first
+const posts = (await Astro.glob('./*.md')).sort(
+  (a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()
+);
+---
+<BaseLayout {title} {description}>
+  <h1 class="text-4xl font-bold mb-8 text-retro-yellow">{title}</h1>
+
+  {posts.length === 0 ? (
+    <p class="text-gray-400">No blog posts available yet.</p>
+  ) : (
+    <ul class="space-y-6">
+      {posts.map(post => (
+        <li class="p-6 border border-gray-700 rounded-lg bg-gray-800/50 transition duration-300 ease-in-out hover:border-retro-green hover:bg-gray-800/80">
+          <h2 class="text-2xl font-semibold mb-2">
+            <a href={post.frontmatter.externalUrl || post.url} 
+               target={post.frontmatter.externalUrl ? '_blank' : '_self'} 
+               rel={post.frontmatter.externalUrl ? 'noopener noreferrer' : ''}
+               class="text-retro-cyan hover:underline">
+              {post.frontmatter.title}
+            </a>
+          </h2>
+          <p class="text-sm text-gray-400 mb-3">
+            Published on: {new Date(post.frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+          <p class="text-gray-300 mb-4">{post.frontmatter.summary || post.frontmatter.description}</p>
+          <a href={post.frontmatter.externalUrl || post.url} 
+             target={post.frontmatter.externalUrl ? '_blank' : '_self'} 
+             rel={post.frontmatter.externalUrl ? 'noopener noreferrer' : ''}
+             class="text-retro-green hover:text-retro-magenta font-semibold">
+            {post.frontmatter.externalUrl ? 'Read on Medium \u2197' : 'Read more \u2192'} 
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+</BaseLayout> 

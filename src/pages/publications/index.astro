@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = "Publications";
+const description = "List of publications by Julien Marteen Akay.";
+
+// Use Astro.glob() to find all publication Markdown files
+// Sort by date, newest first
+const publications = (await Astro.glob('./*.md')).sort(
+  (a, b) => new Date(b.frontmatter.date).valueOf() - new Date(a.frontmatter.date).valueOf()
+);
+---
+<BaseLayout {title} {description}>
+  <h1 class="text-4xl font-bold mb-8 text-retro-cyan">{title}</h1>
+
+  {publications.length === 0 ? (
+    <p class="text-gray-400">No publications available yet.</p>
+  ) : (
+    <ul class="space-y-6">
+      {publications.map(pub => (
+        <li class="p-6 border border-gray-700 rounded-lg bg-gray-800/50 transition duration-300 ease-in-out hover:border-retro-blue hover:bg-gray-800/80">
+          <h2 class="text-2xl font-semibold mb-2">
+            <a href={pub.url} class="text-retro-yellow hover:underline">
+              {pub.frontmatter.title}
+            </a>
+          </h2>
+          <p class="text-sm text-gray-400 mb-3">
+            Published on: {new Date(pub.frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </p>
+          {pub.frontmatter.authors && (
+            <p class="text-sm text-gray-400 mb-3">
+              Authors: {pub.frontmatter.authors.join(', ')}
+            </p>
+          )}
+          <p class="text-gray-300 mb-4">{pub.frontmatter.summary || pub.frontmatter.description}</p>
+          <a href={pub.url} class="text-retro-blue hover:text-retro-magenta font-semibold">
+            Read more &rarr;
+          </a>
+          {/* Optionally add links to PDF, Code etc. here if needed */}
+        </li>
+      ))}
+    </ul>
+  )}
+</BaseLayout> 

@@ -4,11 +4,11 @@
 
 To create a new, modern, sophisticated personal website for Julien Marteen Akay, replacing the existing Hugo-based site. Key requirements include:
 
-*   **Aesthetics:** Dark theme, retro-inspired highlight colors (blue, orange, green, red, cyan, yellow, magenta), modern look and feel.
-*   **Dynamics:** Moving background, potentially other subtle animations.
+*   **Aesthetics:** Dark theme (deep grays/blacks), retro-inspired highlight colors (blue, orange, green, red, cyan, yellow, magenta) potentially used in gradients, modern look and feel. Consider a secondary retro/pixelated font for specific headings or highlights (inspired by INSPIRATION.html). Clean layout, potentially using cards for content sections.
+*   **Dynamics:** Moving background (like the current animated gradient) or potentially a subtle background grid pattern (inspired by INSPIRATION.html). Other subtle animations on interaction.
 *   **Content:** Showcase biography, research interests, education, publications, projects/posts, social links, and CV.
 *   **Deployment:** Continue using GitHub Pages deployed via GitHub Actions.
-*   **Technology:** Open to a new stack for efficiency and desired results (moving away from the old Hugo template).
+*   **Technology:** Astro with Tailwind CSS chosen for performance, DX, and styling flexibility.
 
 ## 2. Technology Stack
 

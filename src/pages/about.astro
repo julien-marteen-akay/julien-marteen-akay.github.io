@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+
+const title = "About Me";
+const description = "Learn more about Julien Marteen Akay, his research interests, education, and background.";
+
+// Extracted data from backup/content/authors/admin/_index.md
+const bio = "My research is centered on advancing human-level AI through a fusion of self-supervised learning and Objective-Driven AI (ODAI).";
+const interests = [
+  "Advanced Machine Intelligence",
+  "Objective-Driven AI",
+  "Self-Supervised Learning"
+];
+const education = [
+  { course: "M.Sc. (Research Master) in Data Science", institution: "Hochschule Bielefeld - University of Applied Sciences and Arts", year: 2024 },
+  { course: "B.Eng. in Mechanical Engineering", institution: "Hochschule Bielefeld - University of Applied Sciences and Arts", year: 2021 }
+];
+const socialLinks = [
+  { href: "mailto:julien.marteen.akay@gmail.com", label: "Email", icon: "envelope" }, // Placeholder icon name
+  { href: "https://www.linkedin.com/in/julien-marteen-akay", label: "LinkedIn", icon: "linkedin" }, // Placeholder icon name
+  { href: "https://medium.com/@julien.marteen.akay", label: "Medium", icon: "medium" }, // Placeholder icon name
+  { href: "https://x.com/julien_marteen", label: "X (Twitter)", icon: "x-twitter" }, // Placeholder icon name
+  { href: "https://github.com/julien-marteen-akay", label: "GitHub", icon: "github" }, // Placeholder icon name
+  { href: "https://orcid.org/0009-0003-7639-5627", label: "ORCID", icon: "orcid" } // Placeholder icon name
+];
+const cvLink = "https://drive.google.com/file/d/1rk4o8Lkwv0f1d9SKO-J6Oi3S-34N0uIc/view?usp=drive_link";
+const avatarSrc = "/avatar.jpg"; // Assuming avatar is in public/
+const detailedBio = `Hi! I'm Julien Marteen Akay, an ML research engineer in industry and deep learning research associate in academia. My research interests revolve around the goal of developing **human-level AI**. I focus on objective-driven AI (ODAI) and self-supervised learning (SSL), particularly in the context of autonomous AI systems. Additionally, I plan to pursue a PhD in advanced (autonomous) machine intelligence while continuing to work full-time in the industry. Inspired by [A Path Towards Autonomous Machine Intelligence](https://openreview.net/pdf?id=BZ5a1r-kVsf), I've enjoyed presenting talks on topics like latent-variable energy-based models, which enable neural networks to handle one-to-many mappings, and scalable SSL approaches such as [VICReg](https://arxiv.org/abs/2105.04906). I've applied these techniques to areas like healthcare AI and microscopy image denoising, and I'm excited to explore better approaches for achieving truly autonomous AI.`;
+
+---
+<BaseLayout title={title} description={description}>
+  <div class="space-y-12">
+    <section class="flex flex-col md:flex-row items-center md:items-start gap-8">
+      <img src={avatarSrc} alt="Julien Marteen Akay" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-retro-magenta object-cover flex-shrink-0">
+      <div class="text-center md:text-left">
+        <h1 class="text-4xl font-bold mb-4 text-retro-cyan">About Me</h1>
+        <p class="text-lg text-gray-300 mb-4">{bio}</p>
+        <div class="prose prose-invert max-w-none text-gray-300" set:html={detailedBio.replace(/\\*\\*(.*?)\\*\\*/g, '<strong class=\"text-retro-yellow\">$1</strong>').replace(/\\\[(.*?)\\]\\((.*?)\\)/g, '<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-retro-blue hover:underline\">$1</a>')} />
+        <div class="mt-6 flex justify-center md:justify-start">
+          <Button href={cvLink} target="_blank" color="cyan" text="View CV" />
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-semibold mb-4 border-b-2 border-retro-orange pb-2">Research Interests</h2>
+      <ul class="list-disc list-inside space-y-2 text-gray-300">
+        {interests.map(interest => (
+          <li>{interest}</li>
+        ))}
+      </ul>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-semibold mb-4 border-b-2 border-retro-green pb-2">Education</h2>
+      <div class="space-y-4">
+        {education.map(edu => (
+          <div class="p-4 border border-gray-700 rounded-lg bg-gray-800/50">
+            <h3 class="text-xl font-medium text-retro-yellow">{edu.course}</h3>
+            <p class="text-gray-400">{edu.institution}</p>
+            <p class="text-gray-500 text-sm">{edu.year}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2 class="text-3xl font-semibold mb-4 border-b-2 border-retro-red pb-2">Connect</h2>
+      <ul class="flex flex-wrap gap-4">
+        {socialLinks.map(link => (
+          <li>
+            <a href={link.href} target="_blank" rel="noopener noreferrer" class="text-retro-blue hover:underline hover:text-retro-magenta transition-colors duration-200">
+              {/* TODO: Replace text with actual icons */}
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4 text-sm text-gray-500">Note: Icons for social links will be added later.</p>
+    </section>
+  </div>
+</BaseLayout> 

@@ -1,0 +1,46 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+// This layout is applied to Markdown files via their frontmatter `layout` property
+// Example: layout: ../../layouts/MarkdownLayout.astro
+
+// The `frontmatter` prop gives access to the Markdown file's frontmatter (title, date, etc.)
+const { frontmatter } = Astro.props;
+
+const title = frontmatter.title || 'Content Page';
+const description = frontmatter.description || 'An article or publication.';
+const pubDate = frontmatter.date ? new Date(frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
+---
+<BaseLayout {title} {description}>
+  <article class="prose prose-invert max-w-none lg:prose-xl prose-headings:text-retro-cyan prose-strong:text-retro-yellow prose-a:text-retro-blue hover:prose-a:text-retro-magenta prose-a:transition-colors prose-a:duration-200">
+    <header class="mb-8 border-b border-gray-700 pb-4">
+      <h1 class="!text-4xl !mb-2">{title}</h1>
+      {pubDate && (
+        <p class="text-gray-400 text-sm">Published on {pubDate}</p>
+      )}
+      {/* TODO: Add author, tags, etc. if needed from frontmatter */}
+    </header>
+
+    <slot /> {/* Markdown content will be injected here */}
+
+  </article>
+</BaseLayout>
+
+<style is:global>
+  /* Add specific styles for Markdown content if needed */
+  .prose pre {
+    background-color: #2d2d2d !important; /* Slightly lighter background for code blocks */
+    border: 1px solid #444;
+    border-radius: 0.375rem; /* Tailwind's rounded-md */
+  }
+  .prose code::before, .prose code::after {
+    content: none !important; /* Remove default backticks around inline code */
+  }
+  .prose code {
+    color: #f07178; /* Example inline code color */
+    background-color: rgba(240, 113, 120, 0.1); /* Subtle background for inline code */
+    padding: 0.1em 0.3em;
+    border-radius: 0.25rem;
+    font-weight: normal;
+  }
+</style> 

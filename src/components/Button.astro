@@ -1,0 +1,75 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+
+// Simplify props, remove complex Omit/& 
+interface Props {
+  text: string;
+  href?: string;
+  color?: 'cyan' | 'yellow' | 'magenta' | 'blue' | 'orange' | 'green' | 'red';
+  variant?: 'solid' | 'outline';
+  target?: string;
+  rel?: string;
+  type?: 'button' | 'submit' | 'reset';
+  class?: string | Record<any, any> | Iterable<any>; // Keep class for styling
+}
+
+const { 
+  text,
+  href,
+  color = 'cyan',
+  variant = 'solid',
+  target,
+  rel,
+  type,
+  class: className // Use className for the class prop
+} = Astro.props;
+
+// Base styles with transitions for smooth effects
+const baseStyles = "inline-block px-6 py-2 rounded-md font-semibold transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 text-center active:scale-[0.98]";
+
+// Color and variant specific styles including hover states
+const colorStyles = {
+  solid: {
+    cyan:    'bg-retro-cyan text-gray-900 hover:bg-opacity-90 focus:ring-retro-cyan',
+    yellow:  'bg-retro-yellow text-gray-900 hover:bg-opacity-90 focus:ring-retro-yellow',
+    magenta: 'bg-retro-magenta text-gray-900 hover:bg-opacity-90 focus:ring-retro-magenta',
+    blue:    'bg-retro-blue text-gray-100 hover:bg-opacity-90 focus:ring-retro-blue',
+    orange:  'bg-retro-orange text-gray-900 hover:bg-opacity-90 focus:ring-retro-orange',
+    green:   'bg-retro-green text-gray-900 hover:bg-opacity-90 focus:ring-retro-green',
+    red:     'bg-retro-red text-gray-100 hover:bg-opacity-90 focus:ring-retro-red',
+  },
+  outline: {
+    cyan:    'border-2 border-retro-cyan text-retro-cyan hover:bg-retro-cyan/10 focus:ring-retro-cyan',
+    yellow:  'border-2 border-retro-yellow text-retro-yellow hover:bg-retro-yellow/10 focus:ring-retro-yellow',
+    magenta: 'border-2 border-retro-magenta text-retro-magenta hover:bg-retro-magenta/10 focus:ring-retro-magenta',
+    blue:    'border-2 border-retro-blue text-retro-blue hover:bg-retro-blue/10 focus:ring-retro-blue',
+    orange:  'border-2 border-retro-orange text-retro-orange hover:bg-retro-orange/10 focus:ring-retro-orange',
+    green:   'border-2 border-retro-green text-retro-green hover:bg-retro-green/10 focus:ring-retro-green',
+    red:     'border-2 border-retro-red text-retro-red hover:bg-retro-red/10 focus:ring-retro-red',
+  }
+};
+
+const appliedStyles = `${baseStyles} ${colorStyles[variant][color]}`;
+
+// Determine tag based on href presence
+const isLink = href !== undefined;
+---
+
+{/* Use explicit conditional rendering, NO attribute spreading */}
+{isLink ? (
+  <a 
+    href={href}
+    target={target || '_blank'} 
+    rel={rel || 'noopener noreferrer'}
+    class:list={[appliedStyles, className]} 
+  >
+    {text}
+  </a>
+) : (
+  <button 
+    type={type || "button"}
+    class:list={[appliedStyles, className]} 
+  >
+    {text}
+  </button>
+)} 
