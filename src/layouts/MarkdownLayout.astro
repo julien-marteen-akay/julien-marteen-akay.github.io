@@ -16,13 +16,33 @@ const pubDate = frontmatter.date ? new Date(frontmatter.date).toLocaleDateString
     <header class="mb-8 border-b border-border_dark pb-4">
       <h1 class="!text-4xl !mb-2">{title}</h1>
       {pubDate && (
-        <p class="text-text_secondary text-sm">Published on {pubDate}</p>
+        <p class="text-text_secondary_light dark:text-text_secondary_dark text-sm">Published on {pubDate}</p>
       )}
       {/* TODO: Add author, tags, etc. if needed from frontmatter */}
     </header>
 
     <slot /> {/* Markdown content will be injected here */}
 
+    {/* Links Section - Rendered from Layout using Frontmatter */}
+    {(frontmatter.url_pdf || frontmatter.url_code || frontmatter.url_source) && (
+      <footer class="mt-12 pt-6 border-t border-border_dark">
+        <h2 class="text-xl font-semibold text-text_secondary_light dark:text-text_secondary_dark mb-3">Links</h2>
+        <ul class="list-none p-0 space-y-2">
+          {frontmatter.url_pdf && (
+            <li>
+              <strong>PDF:</strong> <a href={frontmatter.url_pdf} target="_blank" rel="noopener noreferrer">{frontmatter.publication_short || 'Download/View PDF'}</a> 
+              {frontmatter.url_source && frontmatter.url_pdf === frontmatter.url_source ? ' on Publisher Site' : ''}
+            </li>
+          )}
+          {frontmatter.url_code && (
+            <li><strong>Code:</strong> <a href={frontmatter.url_code} target="_blank" rel="noopener noreferrer">GitHub Repository</a></li>
+          )}
+          {frontmatter.url_source && frontmatter.url_pdf !== frontmatter.url_source && (
+             <li><strong>Source:</strong> <a href={frontmatter.url_source} target="_blank" rel="noopener noreferrer">Publisher Site</a></li>
+          )}
+        </ul>
+      </footer>
+    )}
   </article>
 </BaseLayout>
 

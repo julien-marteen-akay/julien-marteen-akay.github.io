@@ -14,7 +14,7 @@ publication: 'Transferability of Non-contrastive Self-supervised Learning to Chr
 publication_short: 'SSL for Wound Image Recognition'
 summary: 'ConvNeXt models pretrained with non-contrastive self-supervised learning (SSL) outperform other models in recognizing chronic wound images, demonstrating the benefits of modern SSL techniques.' # Shortened summary
 
-# Links
+# Links (These will be used by the layout)
 url_pdf: 'https://link.springer.com/chapter/10.1007/978-3-031-72353-7_31'
 url_code: 'https://github.com/julien-marteen-akay/Transferability-SSL-Wound-Recognition'
 url_source: 'https://link.springer.com/chapter/10.1007/978-3-031-72353-7_31'
@@ -29,10 +29,4 @@ Chronic wounds pose significant challenges in medical practice, necessitating ef
 
 In this study, we investigate the transferability of CNNs pretrained with non-contrastive self-supervised learning (SSL) to enhance generalization in chronic wound image recognition. Our findings indicate that leveraging non-contrastive SSL methods in conjunction with ConvNeXt models yields superior performance compared to other work's multimodal models that additionally benefit from affected body part location data. Furthermore, analysis using Grad-CAM reveals that ConvNeXt models pretrained with VICRegL exhibit improved focus on relevant wound properties compared to the conventional approach of ResNet-50 models pretrained with ImageNet classification. These results underscore the crucial role of the appropriate combination of pretraining method and model architecture in effectively addressing limited wound data settings. Among the various approaches explored, ConvNeXt-XL pretrained by VICRegL emerges as a reliable and stable method. 
 
-This study makes a novel contribution by demonstrating the effectiveness of latest non-contrastive SSL-based transfer learning in advancing the field of chronic wound image recognition.
-
-## Links
-
-*   **PDF:** [{frontmatter.publication_short}]({frontmatter.url_pdf}) on SpringerLink
-*   **Code:** [GitHub Repository]({frontmatter.url_code})
-*   **Source:** [SpringerLink Chapter]({frontmatter.url_source}) 
+This study makes a novel contribution by demonstrating the effectiveness of latest non-contrastive SSL-based transfer learning in advancing the field of chronic wound image recognition. 
