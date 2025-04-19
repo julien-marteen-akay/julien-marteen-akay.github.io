@@ -11,8 +11,10 @@ const title = frontmatter.title || 'Content Page';
 const description = frontmatter.description || 'An article or publication.';
 const pubDate = frontmatter.date ? new Date(frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
 ---
-<BaseLayout {title} {description}>
-  <article class="prose dark:prose-invert max-w-none lg:prose-xl prose-headings:text-accent_cyan prose-a:text-accent_blue hover:prose-a:text-accent_magenta prose-a:transition-colors prose-a:duration-200 prose-strong:text-accent_yellow prose-code:text-accent_magenta">
+<BaseLayout {title} {description} bodyClass="no-moving-background">
+  <article class="prose dark:prose-invert max-w-none lg:prose-xl prose-headings:text-accent_cyan prose-a:text-accent_blue hover:prose-a:text-accent_magenta prose-a:transition-colors prose-a:duration-200 prose-strong:text-accent_yellow prose-code:text-accent_magenta 
+                  p-6 md:p-8 rounded-lg border border-border_light_light dark:border-border_dark shadow-lg 
+                  bg-gradient-to-br from-light to-bg_subtle_light dark:from-dark/50 dark:to-bg_subtle_dark">
     <header class="mb-8 border-b border-border_dark pb-4">
       <h1 class="!text-4xl !mb-2">{title}</h1>
       {pubDate && (

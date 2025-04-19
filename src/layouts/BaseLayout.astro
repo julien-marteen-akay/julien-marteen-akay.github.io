@@ -11,11 +11,13 @@ import MovingBackground from '../components/MovingBackground.astro'; // Import b
 interface Props {
 	title?: string;
 	description?: string;
+	bodyClass?: string; // Add optional bodyClass prop
 }
 
 const { 
 	title = 'Julien Marteen Akay - Personal Website',
-	description = 'Personal website of Julien Marteen Akay, ML Research Engineer and AI Researcher.' 
+	description = 'Personal website of Julien Marteen Akay, ML Research Engineer and AI Researcher.', 
+	bodyClass = '' // Default to empty string
 } = Astro.props;
 ---
 <!doctype html>
@@ -34,8 +36,10 @@ const {
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 	</head>
-	<body class="bg-light text-text_primary_light dark:bg-dark dark:text-text_primary_dark min-h-screen flex flex-col font-sans transition-colors duration-300">
-		{/* Updated body classes for light/dark mode using new palette */}
+	<body class:list={[
+    "bg-dark text-text_primary_dark min-h-screen flex flex-col font-sans transition-colors duration-300", // Reverted base classes
+    bodyClass // Add the dynamic class
+  ]}>
 		<MovingBackground /> {/* Add the background component */}
 		<div class="relative z-10 flex flex-col min-h-screen"> {/* Ensure content is above background */} 
 			<Header />

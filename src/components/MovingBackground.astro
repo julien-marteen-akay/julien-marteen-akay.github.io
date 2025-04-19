@@ -38,9 +38,14 @@
     }
   }
 
-  /* Ensure it doesn't interfere with light mode too much */
-  html:not(.dark) .moving-background {
+  /* Ensure it doesn't interfere with light mode too much - Removing this as light mode is gone */
+  /* html:not(.dark) .moving-background {
      opacity: 0.1; /* Make it very faint in light mode */
+  /*} */
+
+  /* Keep gradient but stop animation on specific pages */
+  body.no-moving-background .moving-background {
+    animation: none;
   }
 
 </style> 

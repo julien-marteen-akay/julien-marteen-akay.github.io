@@ -44,9 +44,9 @@ const detailedBio = `Hi! I'm Julien Marteen Akay, an ML research engineer in ind
         <div class="space-y-4">
           <h1 class="text-4xl font-bold text-accent_cyan">About Me</h1>
           <p class="text-lg text-text_secondary_light dark:text-text_secondary_dark">{bio}</p>
-          <div class="prose dark:prose-invert max-w-none text-text_primary_light dark:text-text_primary_dark" set:html={detailedBio.replace(/\*\*(.*?)\*\*/g, '<strong class=\"text-accent-yellow\">$1</strong>').replace(/\\\[(.*?)\\]\\((.*?)\\)/g, '<a href=\"$2\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"text-accent-blue hover:underline\">$1</a>')} />
+          <div class="prose dark:prose-invert max-w-none text-text_primary_light dark:text-text_primary_dark" set:html={detailedBio.replace(/\*\*(.*?)\*\*/g, '<strong class="text-accent-yellow">$1</strong>').replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-accent-blue hover:underline">$1</a>')} />
           <div class="pt-4">
-            <Button href={cvLink} target="_blank" color="cyan" text="View CV" variant="solid" />
+            <Button href={cvLink} target="_blank" color="magenta" text="View CV" variant="solid" />
           </div>
           {/* Social Links remain inline with bio */}
           <div class="pt-6 border-t border-border_light dark:border-border_dark">
