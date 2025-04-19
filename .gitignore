@@ -122,3 +122,6 @@ dist
 
 # Backup folder for old site
 backup/
+
+# Design document
+DESIGN_DOC.md
