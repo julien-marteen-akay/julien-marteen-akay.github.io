@@ -6,6 +6,7 @@ import rehypeKatex from 'rehype-katex';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://julien-marteen-akay.github.io',
   integrations: [
     tailwind({
       // Optional: Disable applying Tailwind's base styles if necessary
