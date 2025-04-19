@@ -1,0 +1,6 @@
+# Allow all web crawlers access to all content
+User-agent: *
+Allow: /
+
+# Sitemap location (optional but recommended)
+Sitemap: https://julien-marteen-akay.github.io/sitemap-index.xml 

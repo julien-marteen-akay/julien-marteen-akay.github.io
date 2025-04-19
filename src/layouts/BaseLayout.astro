@@ -11,14 +11,20 @@ import MovingBackground from '../components/MovingBackground.astro'; // Import b
 interface Props {
 	title?: string;
 	description?: string;
+	image?: string; // Add optional image prop for OG/Twitter tags
 	bodyClass?: string; // Add optional bodyClass prop
 }
 
-const { 
+const {
 	title = 'Julien Marteen Akay - Personal Website',
-	description = 'Personal website of Julien Marteen Akay, ML Research Engineer and AI Researcher.', 
+	description = 'Personal website of Julien Marteen Akay, ML Research Engineer and AI Researcher.',
+	image = '/avatar.jpg', // Default image for social sharing
 	bodyClass = '' // Default to empty string
 } = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString() : Astro.url.origin;
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const imageUrl = new URL(image, siteUrl); // Ensure image URL is absolute
 ---
 <!doctype html>
 <html lang="en" class="dark scroll-smooth">
@@ -28,8 +34,27 @@ const {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" /> 
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+
+		{/* SEO Meta Tags */}
 		<title>{title}</title>
-		
+
+		{/* Open Graph / Facebook */}
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalUrl.toString()} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content={imageUrl.toString()} />
+
+		{/* Twitter */}
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content={canonicalUrl.toString()} />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={description} />
+		<meta property="twitter:image" content={imageUrl.toString()} />
+
+		{/* Canonical URL */}
+		<link rel="canonical" href={canonicalUrl.toString()} />
+
 		{/* Add any other head elements like fonts, etc. */}
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
