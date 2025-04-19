@@ -54,4 +54,15 @@ const pubDate = frontmatter.date ? new Date(frontmatter.date).toLocaleDateString
     content: none !important; 
   }
   /* Optional: Further customize prose elements if needed */
+
+  /* REMOVED Explicitly hide KaTeX MathML within prose to prevent duplication */
+  /* .prose .katex-mathml {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  } */
 </style> 
