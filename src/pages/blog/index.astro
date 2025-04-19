@@ -24,7 +24,7 @@ const posts = (await Astro.glob('./*.md')).sort(
                    bg-gradient-to-br from-light to-bg_subtle_light dark:from-dark/50 dark:to-bg_subtle_dark">
           <h2 class="text-2xl font-semibold mb-2">
             <a href={post.url} 
-               class="text-accent_cyan hover:underline">
+               class="text-text_primary_light dark:text-text_primary_dark hover:underline">
               {post.frontmatter.title}
             </a>
           </h2>
@@ -35,8 +35,8 @@ const posts = (await Astro.glob('./*.md')).sort(
           <a href={post.frontmatter.externalUrl || post.url} 
              target={post.frontmatter.externalUrl ? "_blank" : "_self"} 
              rel={post.frontmatter.externalUrl ? "noopener noreferrer" : ""}
-             class="text-accent_green hover:text-accent_magenta font-semibold">
-            {post.frontmatter.externalUrl ? 'View details \u2192' : 'Read more \u2192'} 
+             class="text-accent_blue hover:text-accent_magenta font-semibold">
+            {post.frontmatter.externalUrl ? 'Read on Medium \u2192' : 'Read more \u2192'} 
           </a>
         </li>
       ))}

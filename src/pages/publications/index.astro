@@ -23,7 +23,7 @@ const publications = (await Astro.glob('./*.md')).sort(
                    dark:border-border_dark dark:hover:border-accent_blue 
                    bg-gradient-to-br from-light to-bg_subtle_light dark:from-dark/50 dark:to-bg_subtle_dark">
           <h2 class="text-2xl font-semibold mb-2">
-            <a href={pub.url} class="text-accent_cyan hover:underline">
+            <a href={pub.url} class="text-text_primary_light dark:text-text_primary_dark hover:underline">
               {pub.frontmatter.title}
             </a>
           </h2>
