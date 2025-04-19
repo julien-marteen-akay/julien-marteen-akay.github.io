@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import { Icon } from 'astro-icon/components';
-import { Markdown } from '@astropub/md';
+import { marked } from 'marked';
 
 const title = "About Me";
 const description = "Learn more about Julien Marteen Akay, his research interests, education, and background.";
@@ -32,7 +32,10 @@ const detailedBio = `Hi! I'm Julien Marteen Akay — an ML research engineer in 
 
 Practically, I'm interested in objective-driven AI (ODAI), self-supervised learning (SSL), energy-based models (EBMs), and related areas.
 
-Currently working on the H-JEPA.`;
+*&rarr;* Currently working on the H-JEPA.`;
+
+// Parse the Markdown string into HTML
+const renderedBioHtml = marked.parse(detailedBio);
 
 ---
 <BaseLayout title={title} description={description}>
@@ -49,9 +52,7 @@ Currently working on the H-JEPA.`;
         <div class="space-y-4">
           <h1 class="text-4xl font-bold text-accent_yellow">About Me</h1>
           <p class="text-lg text-text_secondary_light dark:text-text_secondary_dark">{bio}</p>
-          <div class="prose dark:prose-invert max-w-none text-text_primary_light dark:text-text_primary_dark">
-            <Markdown of={detailedBio} />
-          </div>
+          <div class="prose dark:prose-invert max-w-none text-text_primary_light dark:text-text_primary_dark" set:html={renderedBioHtml} />
           <div class="pt-4">
             <Button href={cvLink} target="_blank" color="yellow" text="View CV" variant="outline" />
           </div>
