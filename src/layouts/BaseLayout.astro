@@ -16,11 +16,14 @@ interface Props {
 }
 
 const {
-	title = 'Julien Marteen Akay - Personal Website',
+	title: pageTitle = 'Home', // Rename prop to avoid conflict, provide default page title
 	description = 'Personal website of Julien Marteen Akay, ML Research Engineer and AI Researcher.',
 	image = '/avatar.jpg', // Default image for social sharing
 	bodyClass = '' // Default to empty string
 } = Astro.props;
+
+const siteName = "Julien Marteen Akay"; // Define site name
+const fullTitle = pageTitle === 'Home' ? siteName : `${siteName} - ${pageTitle}`; // Construct full title
 
 const siteUrl = Astro.site ? Astro.site.toString() : Astro.url.origin;
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
@@ -31,24 +34,28 @@ const imageUrl = new URL(image, siteUrl); // Ensure image URL is absolute
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" /> 
+		{/* Favicon links - Pointing to /public/icon.png */}
+		<link rel="icon" type="image/png" href="/icon.png" /> {/* General icon */}
+		<link rel="icon" type="image/png" sizes="32x32" href="/icon.png"> {/* 32x32 icon */}
+		<link rel="icon" type="image/png" sizes="16x16" href="/icon.png"> {/* 16x16 icon */}
+		<link rel="apple-touch-icon" sizes="180x180" href="/icon.png"> {/* Apple touch icon */}
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 
 		{/* SEO Meta Tags */}
-		<title>{title}</title>
+		<title>{fullTitle}</title> {/* Use the constructed full title */}
 
 		{/* Open Graph / Facebook */}
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={canonicalUrl.toString()} />
-		<meta property="og:title" content={title} />
+		<meta property="og:title" content={fullTitle} /> {/* Use the constructed full title */}
 		<meta property="og:description" content={description} />
 		<meta property="og:image" content={imageUrl.toString()} />
 
 		{/* Twitter */}
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={canonicalUrl.toString()} />
-		<meta property="twitter:title" content={title} />
+		<meta property="twitter:title" content={fullTitle} /> {/* Use the constructed full title */}
 		<meta property="twitter:description" content={description} />
 		<meta property="twitter:image" content={imageUrl.toString()} />
 
