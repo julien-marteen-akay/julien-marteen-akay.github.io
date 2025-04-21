@@ -30,3 +30,12 @@ This repository contains the source code for the personal website of Julien Mart
 ├── tailwind.config.mjs # Tailwind configuration (dark theme, custom colors, typography)
 └── tsconfig.json       # TypeScript configuration
 ```
+
+## Development (Dev Container)
+There is a `.devcontainer` folder to be used for creating a dev container. It does install the packages and makes the project ready to be ran locally, but the command itself is to be run manually from the terminal within the dev container. You may use one following command to run the website locally:
+
+```bash
+npm run dev -- --host --turbo
+```
+
+You can also just run `npm run dev -- --host`, but the above command should be faster and until know I haven't had any problems with that!

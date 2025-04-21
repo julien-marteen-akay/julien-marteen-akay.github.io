@@ -5,11 +5,11 @@
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "astro-build.astro-vscode"
       ]
     }
   },
-  "forwardPorts": [3000],
-  "postCreateCommand": "npm install",
-  "postStartCommand": "cd new-portfolio && npm run dev -- --turbo"
+  "forwardPorts": [4321],
+  "postCreateCommand": "npm install"
 }
