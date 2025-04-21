@@ -53,26 +53,33 @@ const renderedBioHtml = marked.parse(detailedBio);
           <h1 class="text-4xl font-bold text-accent_yellow">About Me</h1>
           <p class="text-lg text-text_secondary_light dark:text-text_secondary_dark">{bio}</p>
           <div class="prose dark:prose-invert max-w-none text-text_primary_light dark:text-text_primary_dark" set:html={renderedBioHtml} />
-          <div class="pt-4">
-            <Button href={cvLink} target="_blank" color="yellow" text="View CV" variant="outline" />
-          </div>
-          {/* Social Links remain inline with bio */}
-          <div class="pt-6 border-t border-border_light dark:border-border_dark">
-            <h3 class="text-lg font-semibold text-text_secondary mb-3">Connect:</h3>
-            <div class="flex flex-wrap gap-4">
-              {socialLinks.map(link => (
-                <a 
-                  href={link.href} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label={link.label}
-                  title={link.label} 
-                  class="text-text_secondary hover:text-accent_cyan transition-colors duration-200"
-                >
-                  <span class="sr-only">{link.label}</span>
-                  <Icon name={link.icon} class="w-6 h-6" />
-                </a>
-              ))}
+          
+          {/* Wrap Button and Connect links in a flex container */}
+          <div class="flex items-center pt-4 gap-6">
+            {/* View CV Button */}
+            <div> 
+              <Button href={cvLink} target="_blank" color="yellow" text="View CV" variant="outline" />
+            </div>
+
+            {/* Connect Links (moved here) */}
+            <div class="pt-0 border-t-0 border-border_light dark:border-border_dark">
+              {/* Removed pt-6 and border-t */}
+              <h3 class="text-lg font-semibold text-text_secondary mb-3 sr-only">Connect:</h3> {/* Made heading screen-reader only */}
+              <div class="flex flex-wrap gap-4">
+                {socialLinks.map(link => (
+                  <a 
+                    href={link.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    aria-label={link.label}
+                    title={link.label} 
+                    class="text-text_secondary hover:text-accent_cyan transition-colors duration-200"
+                  >
+                    <span class="sr-only">{link.label}</span>
+                    <Icon name={link.icon} class="w-6 h-6" />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>

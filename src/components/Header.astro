@@ -42,7 +42,7 @@ const currentPath = Astro.url.pathname;
                 {/* Animated Underline for Hover State (non-active links) */}\
                 {!isActive && (
                   <span class="absolute bottom-[-4px] left-0 w-full h-0.5 bg-accent_cyan 
-                             scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left">\
+                             scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-center">
                   </span>
                 )}
               </a>
