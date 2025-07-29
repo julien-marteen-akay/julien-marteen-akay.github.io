@@ -74,13 +74,13 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile Menu Overlay -->
     <div 
       id="mobile-menu" 
-      class="md:hidden fixed inset-0 top-16 bg-dark/98 backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-out"
+      class="md:hidden fixed inset-0 top-16 bg-dark backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-out z-40"
     >
       <!-- Menu Content -->
       <div class="flex flex-col h-full">
         <!-- Navigation Links -->
         <nav class="flex-1 px-6 py-8">
-          <ul class="space-y-4">
+          <ul class="space-y-2">
             {navLinks.map((link, index) => {
               const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href + '/'));
               return (
@@ -114,14 +114,6 @@ const currentPath = Astro.url.pathname;
             })}
           </ul>
         </nav>
-
-        <!-- Footer section in mobile menu -->
-        <div class="border-t border-border_dark_dark/30 px-6 py-6">
-          <div class="text-center text-text_secondary_dark text-sm">
-            <p class="mb-2">© 2024 Julien Marteen Akay</p>
-            <p class="text-xs opacity-70">ML Research Engineer & AI Researcher</p>
-          </div>
-        </div>
       </div>
 
       <!-- Close area (tap outside to close) -->
