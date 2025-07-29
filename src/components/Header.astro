@@ -1,57 +1,294 @@
 ---
-// ThemeToggleButton import removed
-
 // Define navigation links
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Publications", href: "/publications" }, // Added publications link
-  { name: "Blog", href: "/blog" },           // Added blog link
+  { name: "Publications", href: "/publications" },
+  { name: "Blog", href: "/blog" },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
-<header class="sticky top-0 z-50 py-3 px-4 backdrop-blur-lg border-b bg-dark/80 border-border_dark transition-colors duration-300"> {/* Keep dark mode classes */}
-  {/* Removed light mode background/border classes */}
-  <nav class="container mx-auto flex justify-between items-center max-w-4xl">
-    <a href="/" class="text-2xl font-bold text-text_primary_dark hover:text-accent_cyan transition-colors duration-300 ease-in-out"> {/* Keep dark mode text color */}
-      Julien Marteen Akay
-    </a>
-    <div class="flex items-center space-x-4 md:space-x-6">
-      {/* Navigation Links */}
-      <ul class="flex space-x-4 md:space-x-6">
+
+<header class="sticky top-0 z-50 backdrop-blur-lg bg-dark/95 border-b border-border_dark_dark/50 transition-all duration-300">
+  <nav class="container mx-auto px-4 max-w-4xl">
+    <div class="flex justify-between items-center h-16">
+      
+      <!-- Logo - Responsive -->
+      <a href="/" class="flex-shrink-0 group">
+        <!-- Desktop Logo -->
+        <span class="hidden sm:block text-xl md:text-2xl font-bold text-text_primary_dark group-hover:text-accent_cyan transition-colors duration-300">
+          Julien Marteen Akay
+        </span>
+        <!-- Mobile Logo -->
+        <span class="sm:hidden text-xl font-bold text-text_primary_dark group-hover:text-accent_cyan transition-colors duration-300">
+          JMA
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
         {navLinks.map(link => {
           const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href + '/'));
           return (
-            <li>
-              <a 
-                href={link.href} 
-                class:list={[
-                  "relative text-lg transition-colors duration-200 ease-in-out group", // Added relative and group
-                  "text-text_secondary_dark", // Base dark color
-                  isActive
-                    ? "text-accent_magenta font-semibold dark:text-accent_magenta" // Active color (keep dark variant for specificity if needed, but likely redundant now)
-                    : "hover:text-accent_cyan dark:hover:text-accent_cyan" // Hover color (keep dark variant)
-                ]}
-              >
-                {link.name}
-                {/* Underline for Active State */}
-                {isActive && (
-                  <span class="absolute bottom-[-4px] left-0 w-full h-0.5 bg-accent_magenta"></span>
-                )}
-                {/* Animated Underline for Hover State (non-active links) */}\
-                {!isActive && (
-                  <span class="absolute bottom-[-4px] left-0 w-full h-0.5 bg-accent_cyan 
-                             scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-in-out origin-center">
-                  </span>
-                )}
-              </a>
-            </li>
+            <a 
+              href={link.href} 
+              class:list={[
+                "relative py-2 px-3 text-base font-medium transition-all duration-300 group rounded-lg",
+                isActive
+                  ? "text-accent_yellow bg-accent_yellow/10" 
+                  : "text-text_secondary_dark hover:text-accent_cyan hover:bg-accent_cyan/5"
+              ]}
+            >
+              {link.name}
+              {/* Active indicator */}
+              {isActive && (
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-accent_yellow rounded-full"></span>
+              )}
+              {/* Hover indicator */}
+              {!isActive && (
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-accent_cyan rounded-full transition-all duration-300 group-hover:w-1"></span>
+              )}
+            </a>
           );
         })}
-      </ul>
-      {/* Theme Toggle Button Removed */}
-      {/* <ThemeToggleButton /> */}
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button 
+        id="mobile-menu-button" 
+        class="md:hidden relative w-10 h-10 flex flex-col justify-center items-center space-y-1.5 group touch-manipulation"
+        aria-label="Toggle mobile menu"
+        aria-expanded="false"
+      >
+        <!-- Hamburger lines with smooth animations -->
+        <span class="hamburger-line w-6 h-0.5 bg-text_primary_dark transform transition-all duration-300 group-active:scale-95"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-text_primary_dark transform transition-all duration-300 group-active:scale-95"></span>
+        <span class="hamburger-line w-6 h-0.5 bg-text_primary_dark transform transition-all duration-300 group-active:scale-95"></span>
+        
+        <!-- Touch feedback ring -->
+        <div class="absolute inset-0 rounded-lg bg-accent_cyan/20 scale-0 group-active:scale-100 transition-transform duration-150"></div>
+      </button>
+    </div>
+
+    <!-- Mobile Menu Overlay -->
+    <div 
+      id="mobile-menu" 
+      class="md:hidden fixed inset-0 top-16 bg-dark/98 backdrop-blur-lg transform translate-x-full transition-transform duration-300 ease-out"
+    >
+      <!-- Menu Content -->
+      <div class="flex flex-col h-full">
+        <!-- Navigation Links -->
+        <nav class="flex-1 px-6 py-8">
+          <ul class="space-y-4">
+            {navLinks.map((link, index) => {
+              const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href + '/'));
+              return (
+                <li 
+                  class="mobile-nav-item transform translate-x-8 opacity-0 transition-all duration-500 ease-out"
+                  style={`transition-delay: ${index * 100}ms`}
+                >
+                  <a 
+                    href={link.href} 
+                    class:list={[
+                      "flex items-center w-full py-4 px-6 text-lg font-medium rounded-xl transition-all duration-300 touch-manipulation",
+                      isActive
+                        ? "text-accent_yellow bg-accent_yellow/15 border-l-4 border-accent_yellow" 
+                        : "text-text_primary_dark hover:text-accent_cyan hover:bg-accent_cyan/10 active:bg-accent_cyan/20"
+                    ]}
+                  >
+                    {/* Icon placeholder for future enhancement */}
+                    <span class="w-2 h-2 mr-4 rounded-full bg-current opacity-60"></span>
+                    {link.name}
+                    {/* Active indicator */}
+                    {isActive && (
+                      <span class="ml-auto text-accent_yellow">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                          <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                      </span>
+                    )}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        <!-- Footer section in mobile menu -->
+        <div class="border-t border-border_dark_dark/30 px-6 py-6">
+          <div class="text-center text-text_secondary_dark text-sm">
+            <p class="mb-2">© 2024 Julien Marteen Akay</p>
+            <p class="text-xs opacity-70">ML Research Engineer & AI Researcher</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Close area (tap outside to close) -->
+      <div class="absolute inset-0 -z-10" id="mobile-menu-backdrop"></div>
     </div>
   </nav>
-</header> 
+</header>
+
+<script>
+  // @ts-nocheck
+  // Mobile menu functionality
+  class MobileMenu {
+    constructor() {
+      /** @type {HTMLElement | null} */
+      this.button = document.getElementById('mobile-menu-button');
+      /** @type {HTMLElement | null} */
+      this.menu = document.getElementById('mobile-menu');
+      /** @type {HTMLElement | null} */
+      this.backdrop = document.getElementById('mobile-menu-backdrop');
+      /** @type {NodeListOf<HTMLElement>} */
+      this.hamburgerLines = document.querySelectorAll('.hamburger-line');
+      /** @type {NodeListOf<HTMLElement>} */
+      this.navItems = document.querySelectorAll('.mobile-nav-item');
+      /** @type {boolean} */
+      this.isOpen = false;
+
+      this.init();
+    }
+
+    init() {
+      // Menu toggle button
+      this.button?.addEventListener('click', () => this.toggle());
+      
+      // Close when clicking backdrop
+      this.backdrop?.addEventListener('click', () => this.close());
+      
+      // Close when clicking nav links
+      this.menu?.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => this.close());
+      });
+
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && this.isOpen) {
+          this.close();
+        }
+      });
+
+      // Handle resize events
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768 && this.isOpen) {
+          this.close();
+        }
+      });
+
+      // Prevent body scroll when menu is open
+      this.menu?.addEventListener('transitionstart', () => {
+        if (this.isOpen) {
+          document.body.style.overflow = 'hidden';
+        }
+      });
+
+      this.menu?.addEventListener('transitionend', () => {
+        if (!this.isOpen) {
+          document.body.style.overflow = '';
+        }
+      });
+    }
+
+    toggle() {
+      this.isOpen ? this.close() : this.open();
+    }
+
+    open() {
+      this.isOpen = true;
+      this.button?.setAttribute('aria-expanded', 'true');
+      
+      // Transform menu
+      this.menu?.classList.remove('translate-x-full');
+      this.menu?.classList.add('translate-x-0');
+      
+      // Animate hamburger to X
+      if (this.hamburgerLines.length >= 3) {
+        this.hamburgerLines[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+        this.hamburgerLines[1].style.opacity = '0';
+        this.hamburgerLines[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+      }
+
+      // Animate nav items in
+      setTimeout(() => {
+        this.navItems.forEach((item, index) => {
+          setTimeout(() => {
+            item.classList.remove('translate-x-8', 'opacity-0');
+            item.classList.add('translate-x-0', 'opacity-100');
+          }, index * 100);
+        });
+      }, 150);
+    }
+
+    close() {
+      this.isOpen = false;
+      this.button?.setAttribute('aria-expanded', 'false');
+      
+      // Hide nav items first
+      this.navItems.forEach(item => {
+        item.classList.add('translate-x-8', 'opacity-0');
+        item.classList.remove('translate-x-0', 'opacity-100');
+      });
+
+      // Transform menu
+      setTimeout(() => {
+        this.menu?.classList.add('translate-x-full');
+        this.menu?.classList.remove('translate-x-0');
+      }, 150);
+      
+      // Reset hamburger
+      if (this.hamburgerLines.length >= 3) {
+        this.hamburgerLines[0].style.transform = '';
+        this.hamburgerLines[1].style.opacity = '';
+        this.hamburgerLines[2].style.transform = '';
+      }
+    }
+  }
+
+  // Initialize when DOM is ready
+  document.addEventListener('DOMContentLoaded', () => {
+    new MobileMenu();
+  });
+
+  // Reinitialize on navigation (for SPA-like behavior)
+  document.addEventListener('astro:page-load', () => {
+    new MobileMenu();
+  });
+</script>
+
+<style>
+  /* Enhanced touch targets for mobile */
+  @media (max-width: 768px) {
+    .touch-manipulation {
+      touch-action: manipulation;
+    }
+  }
+
+  /* Smooth hamburger animations */
+  .hamburger-line {
+    transform-origin: center;
+  }
+
+  /* Enhanced mobile menu backdrop */
+  #mobile-menu {
+    will-change: transform;
+  }
+
+  /* iOS safe area support */
+  @supports (padding: max(0px)) {
+    .mobile-menu-content {
+      padding-top: max(1rem, env(safe-area-inset-top));
+      padding-bottom: max(1rem, env(safe-area-inset-bottom));
+      padding-left: max(1rem, env(safe-area-inset-left));
+      padding-right: max(1rem, env(safe-area-inset-right));
+    }
+  }
+
+  /* Prevent text selection on menu button */
+  #mobile-menu-button {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+</style> 

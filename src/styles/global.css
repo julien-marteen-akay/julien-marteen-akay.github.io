@@ -4,8 +4,91 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Add any custom base styles below */
+/* Mobile-first base styles */
+html {
+  /* Smooth scrolling for anchor links */
+  scroll-behavior: smooth;
+  
+  /* Prevent zoom on iOS when focusing inputs */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
-  /* Example: Add a default transition to all elements */
-  /* transition: all 0.2s ease-in-out; */
+  /* Prevent overscroll bounce on iOS */
+  overscroll-behavior: none;
+  
+  /* Improve scrolling performance on mobile */
+  -webkit-overflow-scrolling: touch;
+  
+  /* Better font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Enhanced touch interactions */
+* {
+  /* Custom tap highlight color */
+  -webkit-tap-highlight-color: rgba(88, 166, 255, 0.2);
+  
+  /* Prevent callout menu on iOS long press */
+  -webkit-touch-callout: none;
+}
+
+/* Touch-friendly elements should allow callouts */
+a, button, [role="button"] {
+  -webkit-touch-callout: default;
+}
+
+/* Improve focus visibility for keyboard navigation */
+:focus-visible {
+  outline: 2px solid #58a6ff;
+  outline-offset: 2px;
+}
+
+/* Hide outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Ensure minimum touch target size */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Optimize text selection on mobile */
+  p, li, span {
+    -webkit-user-select: text;
+    user-select: text;
+  }
+  
+  /* Prevent text selection on interactive elements */
+  button, [role="button"] {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Safe area support for iOS devices */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 } 

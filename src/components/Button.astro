@@ -42,26 +42,26 @@ const colorMap: Record<ColorProp, PaletteKey> = {
 // Ensure the resulting key is of the correct type
 const paletteKey: PaletteKey = colorMap[color as ColorProp] || 'accent_cyan'; 
 
-const baseStyles = "inline-block px-6 py-2 rounded-md font-semibold transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark text-center active:scale-[0.98]";
+const baseStyles = "inline-block px-4 py-3 sm:px-6 sm:py-3 rounded-lg font-semibold transition-all duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark text-center text-sm sm:text-base min-h-[44px] touch-manipulation select-none whitespace-nowrap active:scale-[0.96] sm:active:scale-[0.98]";
 
 const variantStyles = {
   solid: {
-    accent_cyan:    `bg-accent_cyan text-gray-900 hover:bg-opacity-90 focus:ring-accent_cyan`,
-    accent_yellow:  `bg-accent_yellow text-gray-900 hover:bg-opacity-90 focus:ring-accent_yellow`,
-    accent_green:   `bg-accent_green text-gray-900 hover:bg-opacity-90 focus:ring-accent_green`,
-    accent_magenta: `bg-accent_magenta text-white hover:bg-opacity-90 focus:ring-accent_magenta`,
-    accent_blue:    `bg-accent_blue text-white hover:bg-opacity-90 focus:ring-accent_blue`,
-    accent_orange:  `bg-accent_orange text-white hover:bg-opacity-90 focus:ring-accent_orange`,
-    accent_red:     `bg-accent_red text-white hover:bg-opacity-90 focus:ring-accent_red`,
+    accent_cyan:    `bg-accent_cyan text-gray-900 hover:bg-opacity-90 active:bg-opacity-80 focus:ring-accent_cyan`,
+    accent_yellow:  `bg-accent_yellow text-gray-900 hover:bg-opacity-90 active:bg-opacity-80 focus:ring-accent_yellow`,
+    accent_green:   `bg-accent_green text-gray-900 hover:bg-opacity-90 active:bg-opacity-80 focus:ring-accent_green`,
+    accent_magenta: `bg-accent_magenta text-white hover:bg-opacity-90 active:bg-opacity-80 focus:ring-accent_magenta`,
+    accent_blue:    `bg-accent_blue text-white hover:bg-opacity-90 active:bg-opacity-80 focus:ring-accent_blue`,
+    accent_orange:  `bg-accent_orange text-white hover:bg-opacity-90 active:bg-opacity-80 focus:ring-accent_orange`,
+    accent_red:     `bg-accent_red text-white hover:bg-opacity-90 active:bg-opacity-80 focus:ring-accent_red`,
   },
   outline: {
-    accent_cyan:    `border-2 border-accent_cyan text-accent_cyan hover:bg-accent_cyan/20 focus:ring-accent_cyan`,
-    accent_yellow:  `border-2 border-accent_yellow text-accent_yellow hover:bg-accent_yellow/20 focus:ring-accent_yellow`,
-    accent_magenta: `border-2 border-accent_magenta text-accent_magenta hover:bg-accent_magenta/20 focus:ring-accent_magenta`,
-    accent_blue:    `border-2 border-accent_blue text-accent_blue hover:bg-accent_blue/20 focus:ring-accent_blue`,
-    accent_orange:  `border-2 border-accent_orange text-accent_orange hover:bg-accent_orange/20 focus:ring-accent_orange`,
-    accent_green:   `border-2 border-accent_green text-accent_green hover:bg-accent_green/20 focus:ring-accent_green`,
-    accent_red:     `border-2 border-accent_red text-accent_red hover:bg-accent_red/20 focus:ring-accent_red`,
+    accent_cyan:    `border-2 border-accent_cyan text-accent_cyan hover:bg-accent_cyan/20 active:bg-accent_cyan/30 focus:ring-accent_cyan`,
+    accent_yellow:  `border-2 border-accent_yellow text-accent_yellow hover:bg-accent_yellow/20 active:bg-accent_yellow/30 focus:ring-accent_yellow`,
+    accent_magenta: `border-2 border-accent_magenta text-accent_magenta hover:bg-accent_magenta/20 active:bg-accent_magenta/30 focus:ring-accent_magenta`,
+    accent_blue:    `border-2 border-accent_blue text-accent_blue hover:bg-accent_blue/20 active:bg-accent_blue/30 focus:ring-accent_blue`,
+    accent_orange:  `border-2 border-accent_orange text-accent_orange hover:bg-accent_orange/20 active:bg-accent_orange/30 focus:ring-accent_orange`,
+    accent_green:   `border-2 border-accent_green text-accent_green hover:bg-accent_green/20 active:bg-accent_green/30 focus:ring-accent_green`,
+    accent_red:     `border-2 border-accent_red text-accent_red hover:bg-accent_red/20 active:bg-accent_red/30 focus:ring-accent_red`,
   }
 };
 
