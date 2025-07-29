@@ -3,12 +3,12 @@
 // Define the color palettes
 const colors = {
   // Dark Mode Base
-  dark: '#1a1a1a',
-  text_primary_dark: '#e0e0e0',
-  text_secondary_dark: '#a0a0a0',
-  border_light_dark: '#444444',
-  border_dark_dark: '#2a2a2a',
-  bg_subtle_dark: 'rgba(255, 255, 255, 0.05)',
+  dark: '#0d1117',          // Slightly bluer dark (like GitHub dark)
+  text_primary_dark: '#f0f6fc',     // Softer white
+  text_secondary_dark: '#8b949e',   // Warmer gray
+  border_light_dark: '#30363d',     // Lighter border
+  border_dark_dark: '#21262d',      // Darker border
+  bg_subtle_dark: 'rgba(255, 255, 255, 0.03)', // More subtle
   
   // Light Mode Base Removed
   // light: '#f8f9fa', 
@@ -18,14 +18,14 @@ const colors = {
   // border_dark_light: '#adb5bd',
   // bg_subtle_light: 'rgba(0, 0, 0, 0.03)',
 
-  // Accents (Shared)
-  accent_cyan: '#00ffff',
-  accent_yellow: '#ffff00',
-  accent_magenta: '#ff00ff',
-  accent_blue: '#00a0ff',
-  accent_orange: '#ff8c00',
-  accent_green: '#32cd32',
-  accent_red: '#ff4136',
+  // Refined Accents (More accessible, less harsh)
+  accent_cyan: '#58a6ff',     // GitHub blue - professional yet vibrant
+  accent_yellow: '#f9c23c',   // Warmer, less harsh yellow  
+  accent_magenta: '#bc8cff',  // Softer purple/magenta
+  accent_blue: '#409eff',     // Balanced blue
+  accent_orange: '#ff9500',   // Apple orange
+  accent_green: '#3fb950',    // GitHub green
+  accent_red: '#f85149',      // Softer red
 };
 
 export default {

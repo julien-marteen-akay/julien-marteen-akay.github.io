@@ -14,7 +14,7 @@ const socialLinks = [
 
 const currentYear = new Date().getFullYear();
 ---
-<footer class="mt-auto py-8 px-4 border-t bg-light border-border_light_light dark:bg-dark dark:border-border_dark transition-colors duration-300">
+<footer class="mt-auto py-8 px-4 border-t bg-dark border-border_dark_dark transition-colors duration-300">
   <div class="container mx-auto max-w-4xl flex flex-col md:flex-row justify-between items-center gap-6">
     
     {/* Social Links Section */}
@@ -26,7 +26,7 @@ const currentYear = new Date().getFullYear();
           rel="noopener noreferrer" 
           aria-label={link.label}
           title={link.label} 
-          class="text-text_secondary_light dark:text-text_secondary_dark hover:text-accent_cyan transition-colors duration-200"
+          class="text-text_secondary_dark hover:text-accent_cyan transition-colors duration-200"
         >
           <span class="sr-only">{link.label}</span>
           <Icon name={link.icon} class="w-6 h-6" /> {/* Use Icon component */}
@@ -35,10 +35,10 @@ const currentYear = new Date().getFullYear();
     </div>
 
     {/* Copyright Section */}
-    <div class="text-center md:text-right text-text_secondary_light dark:text-text_secondary_dark text-sm">
+    <div class="text-center md:text-right text-text_secondary_dark text-sm">
       <p>&copy; {currentYear} Julien Marteen Akay</p>
       <p class="mt-1">
-        Built with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="hover:text-accent_yellow">Astro</a>
+        Built with <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" class="hover:text-accent_yellow transition-colors duration-200">Astro</a>
       </p>
     </div>
 
