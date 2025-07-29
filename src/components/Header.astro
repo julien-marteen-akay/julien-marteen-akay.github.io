@@ -70,7 +70,7 @@ const currentPath = Astro.url.pathname;
     <!-- Mobile Menu Overlay -->
     <div 
       id="mobile-menu" 
-      class="md:hidden fixed inset-0 top-16 sm:top-20 bg-gray-900 backdrop-blur-xl hidden transition-all duration-300 ease-out z-50"
+      class="md:hidden fixed inset-0 top-16 sm:top-20 bg-slate-950 shadow-2xl hidden transition-all duration-300 ease-out z-50"
     >
       <!-- Menu Content -->
       <div class="flex flex-col h-full">
@@ -89,8 +89,8 @@ const currentPath = Astro.url.pathname;
                     class:list={[
                       "flex items-center w-full py-4 px-6 text-lg font-medium rounded-xl transition-all duration-300 touch-manipulation",
                       isActive
-                        ? "text-accent_yellow bg-accent_yellow/20 border-l-4 border-accent_yellow shadow-lg" 
-                        : "text-white hover:text-accent_cyan hover:bg-white/10 active:bg-white/20"
+                        ? "text-accent_yellow bg-accent_yellow/30 border-l-4 border-accent_yellow shadow-lg" 
+                        : "text-gray-100 hover:text-accent_cyan hover:bg-slate-800 active:bg-slate-700"
                     ]}
                   >
                     {/* Icon placeholder for future enhancement */}
