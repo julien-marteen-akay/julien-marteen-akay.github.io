@@ -10,19 +10,15 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 backdrop-blur-lg bg-dark/95 border-b border-border_dark_dark/50 transition-all duration-300">
+<header class="sticky top-0 z-50 backdrop-blur-lg bg-dark border-b border-border_dark_dark transition-all duration-300 shadow-lg md:bg-dark/95">
   <nav class="container mx-auto px-4 max-w-4xl">
-    <div class="flex justify-between items-center h-16">
+          <div class="flex justify-between items-center h-16 sm:h-20">
       
       <!-- Logo - Responsive -->
       <a href="/" class="flex-shrink-0 group">
-        <!-- Desktop Logo -->
-        <span class="hidden sm:block text-xl md:text-2xl font-bold text-text_primary_dark group-hover:text-accent_cyan transition-colors duration-300">
+        <!-- Full Name Logo - Now shows on smartphones too -->
+        <span class="text-lg sm:text-xl md:text-2xl font-bold text-text_primary_dark group-hover:text-accent_cyan transition-colors duration-300 whitespace-nowrap">
           Julien Marteen Akay
-        </span>
-        <!-- Mobile Logo -->
-        <span class="sm:hidden text-xl font-bold text-text_primary_dark group-hover:text-accent_cyan transition-colors duration-300">
-          JMA
         </span>
       </a>
 
@@ -57,24 +53,24 @@ const currentPath = Astro.url.pathname;
       <!-- Mobile Menu Button -->
       <button 
         id="mobile-menu-button" 
-        class="md:hidden relative w-10 h-10 flex flex-col justify-center items-center space-y-1.5 group touch-manipulation"
+        class="md:hidden relative w-11 h-11 flex flex-col justify-center items-center space-y-1.5 group touch-manipulation bg-accent_cyan/10 rounded-lg border border-accent_cyan/20 hover:bg-accent_cyan/20 active:bg-accent_cyan/30 transition-all duration-200"
         aria-label="Toggle mobile menu"
         aria-expanded="false"
       >
         <!-- Hamburger lines with smooth animations -->
-        <span class="hamburger-line w-6 h-0.5 bg-text_primary_dark transform transition-all duration-300 group-active:scale-95"></span>
-        <span class="hamburger-line w-6 h-0.5 bg-text_primary_dark transform transition-all duration-300 group-active:scale-95"></span>
-        <span class="hamburger-line w-6 h-0.5 bg-text_primary_dark transform transition-all duration-300 group-active:scale-95"></span>
+        <span class="hamburger-line w-5 h-0.5 bg-accent_cyan transform transition-all duration-300 group-active:scale-95 shadow-sm"></span>
+        <span class="hamburger-line w-5 h-0.5 bg-accent_cyan transform transition-all duration-300 group-active:scale-95 shadow-sm"></span>
+        <span class="hamburger-line w-5 h-0.5 bg-accent_cyan transform transition-all duration-300 group-active:scale-95 shadow-sm"></span>
         
-        <!-- Touch feedback ring -->
-        <div class="absolute inset-0 rounded-lg bg-accent_cyan/20 scale-0 group-active:scale-100 transition-transform duration-150"></div>
+        <!-- Enhanced touch feedback ring -->
+        <div class="absolute inset-0 rounded-lg bg-accent_cyan/30 scale-0 group-active:scale-110 transition-transform duration-150"></div>
       </button>
     </div>
 
     <!-- Mobile Menu Overlay -->
     <div 
       id="mobile-menu" 
-      class="md:hidden fixed inset-0 top-16 bg-black/90 backdrop-blur-xl hidden transition-all duration-300 ease-out z-50"
+      class="md:hidden fixed inset-0 top-16 sm:top-20 bg-black/90 backdrop-blur-xl hidden transition-all duration-300 ease-out z-50"
     >
       <!-- Menu Content -->
       <div class="flex flex-col h-full">
@@ -280,10 +276,17 @@ const currentPath = Astro.url.pathname;
     }
   }
 
-  /* Prevent text selection on menu button */
+  /* Enhanced burger menu button */
   #mobile-menu-button {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(88, 166, 255, 0.1);
+  }
+  
+  /* Enhanced visibility for hamburger lines */
+  .hamburger-line {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
   }
 </style> 
