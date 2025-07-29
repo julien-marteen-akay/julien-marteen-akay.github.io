@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
+
 // Define navigation links
 const navLinks = [
   { name: "Home", href: "/" },
@@ -10,62 +12,80 @@ const navLinks = [
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 backdrop-blur-lg bg-dark border-b border-border_dark_dark transition-all duration-300 shadow-lg md:bg-dark/95">
-  <nav class="container mx-auto px-4 max-w-4xl">
-          <div class="flex justify-between items-center h-16 sm:h-20">
-      
-      <!-- Logo - Responsive -->
-      <a href="/" class="flex-shrink-0 group">
-        <!-- Full Name Logo - Now shows on smartphones too -->
-        <span class="text-lg sm:text-xl md:text-2xl font-bold text-text_primary_dark group-hover:text-accent_cyan transition-colors duration-300 whitespace-nowrap">
-          Julien Marteen Akay
-        </span>
-      </a>
-
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-8">
-        {navLinks.map(link => {
-          const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href + '/'));
-          return (
-            <a 
-              href={link.href} 
-              class:list={[
-                "relative py-2 px-3 text-base font-medium transition-all duration-300 group rounded-lg",
-                isActive
-                  ? "text-accent_yellow bg-accent_yellow/10" 
-                  : "text-text_secondary_dark hover:text-accent_cyan hover:bg-accent_cyan/5"
-              ]}
-            >
-              {link.name}
-              {/* Active indicator */}
-              {isActive && (
-                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-accent_yellow rounded-full"></span>
-              )}
-              {/* Hover indicator */}
-              {!isActive && (
-                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-accent_cyan rounded-full transition-all duration-300 group-hover:w-1"></span>
-              )}
-            </a>
-          );
-        })}
-      </div>
-
-      <!-- Mobile Menu Button -->
-      <button 
-        id="mobile-menu-button" 
-        class="md:hidden relative w-11 h-11 flex flex-col justify-center items-center space-y-1.5 group touch-manipulation bg-accent_cyan/10 rounded-lg border border-accent_cyan/20 hover:bg-accent_cyan/20 active:bg-accent_cyan/30 transition-all duration-200"
-        aria-label="Toggle mobile menu"
-        aria-expanded="false"
-      >
-        <!-- Hamburger lines with smooth animations -->
-        <span class="hamburger-line w-5 h-0.5 bg-accent_cyan transform transition-all duration-300 group-active:scale-95 shadow-sm"></span>
-        <span class="hamburger-line w-5 h-0.5 bg-accent_cyan transform transition-all duration-300 group-active:scale-95 shadow-sm"></span>
-        <span class="hamburger-line w-5 h-0.5 bg-accent_cyan transform transition-all duration-300 group-active:scale-95 shadow-sm"></span>
+<header class="sticky top-0 z-50 backdrop-blur-lg bg-light dark:bg-dark border-b border-border_light_light dark:border-border_dark_dark transition-all duration-300 shadow-lg md:bg-light/95 md:dark:bg-dark/95">
+      <nav class="container mx-auto px-4 max-w-4xl">
+      <div class="flex items-center h-16 sm:h-20">
         
-        <!-- Enhanced touch feedback ring -->
-        <div class="absolute inset-0 rounded-lg bg-accent_cyan/30 scale-0 group-active:scale-110 transition-transform duration-150"></div>
-      </button>
-    </div>
+        <!-- Mobile Layout: Burger Left, Name Center, Theme Toggle Right -->
+        <div class="md:hidden flex items-center justify-between w-full">
+          <!-- Mobile Menu Button -->
+          <button 
+            id="mobile-menu-button" 
+            class="relative w-11 h-11 flex flex-col justify-center items-center space-y-1.5 group touch-manipulation bg-accent_cyan_light/10 dark:bg-accent_cyan/20 rounded-lg border border-accent_cyan_light/20 dark:border-accent_cyan/30 hover:bg-accent_cyan_light/20 dark:hover:bg-accent_cyan/30 active:bg-accent_cyan_light/30 dark:active:bg-accent_cyan/40 transition-all duration-200"
+            aria-label="Toggle mobile menu"
+            aria-expanded="false"
+          >
+            <!-- Hamburger lines with smooth animations -->
+            <span class="hamburger-line w-5 h-0.5 bg-accent_cyan_light dark:bg-accent_cyan transform transition-all duration-300 group-active:scale-95 shadow-sm"></span>
+            <span class="hamburger-line w-5 h-0.5 bg-accent_cyan_light dark:bg-accent_cyan transform transition-all duration-300 group-active:scale-95 shadow-sm"></span>
+            <span class="hamburger-line w-5 h-0.5 bg-accent_cyan_light dark:bg-accent_cyan transform transition-all duration-300 group-active:scale-95 shadow-sm"></span>
+            
+            <!-- Enhanced touch feedback ring -->
+            <div class="absolute inset-0 rounded-lg bg-accent_cyan_light/30 dark:bg-accent_cyan/30 scale-0 group-active:scale-110 transition-transform duration-150"></div>
+          </button>
+
+          <!-- Mobile Logo - Centered -->
+          <a href="/" class="flex-shrink-0 group absolute left-1/2 transform -translate-x-1/2">
+            <span class="text-lg font-bold text-text_primary_light dark:text-text_primary_dark group-hover:text-accent_cyan_light dark:group-hover:text-accent_cyan transition-colors duration-300 whitespace-nowrap">
+              Julien Marteen Akay
+            </span>
+          </a>
+
+          <!-- Mobile Theme Toggle - Right -->
+          <ThemeToggle />
+        </div>
+
+        <!-- Desktop Layout: Name Left, Nav Center, Theme Toggle Right -->
+        <div class="hidden md:flex items-center justify-between w-full">
+          <!-- Desktop Logo -->
+          <a href="/" class="flex-shrink-0 group">
+            <span class="text-xl lg:text-2xl font-bold text-text_primary_light dark:text-text_primary_dark group-hover:text-accent_cyan_light dark:group-hover:text-accent_cyan transition-colors duration-300 whitespace-nowrap">
+              Julien Marteen Akay
+            </span>
+          </a>
+
+          <!-- Desktop Navigation -->
+          <div class="flex items-center space-x-8">
+            {navLinks.map(link => {
+              const isActive = currentPath === link.href || (link.href !== '/' && currentPath.startsWith(link.href + '/'));
+              return (
+                <a 
+                  href={link.href} 
+                                      class:list={[
+                      "relative py-2 px-3 text-base font-medium transition-all duration-300 group rounded-lg",
+                      isActive
+                        ? "text-accent_yellow_light dark:text-accent_yellow bg-accent_yellow_light/10 dark:bg-accent_yellow/20" 
+                        : "text-text_secondary_light dark:text-text_secondary_dark hover:text-accent_cyan_light dark:hover:text-accent_cyan hover:bg-accent_cyan_light/5 dark:hover:bg-accent_cyan/10"
+                    ]}
+                >
+                  {link.name}
+                  {/* Active indicator */}
+                  {isActive && (
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-accent_yellow_light dark:bg-accent_yellow rounded-full"></span>
+                  )}
+                  {/* Hover indicator */}
+                  {!isActive && (
+                    <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 bg-accent_cyan_light dark:bg-accent_cyan rounded-full transition-all duration-300 group-hover:w-1"></span>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+
+          <!-- Desktop Theme Toggle -->
+          <ThemeToggle />
+        </div>
+      </div>
 
     <!-- Mobile Menu Overlay -->
     <div 

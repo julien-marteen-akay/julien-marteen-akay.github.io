@@ -12,13 +12,13 @@ const description = frontmatter.description || 'An article or publication.';
 const pubDate = frontmatter.date ? new Date(frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
 ---
 <BaseLayout {title} {description}>
-  <article class="prose prose-invert max-w-none lg:prose-xl prose-headings:text-accent_cyan prose-a:text-accent_blue hover:prose-a:text-accent_magenta prose-a:transition-colors prose-a:duration-200 prose-strong:text-accent_yellow prose-code:text-accent_magenta 
-                  p-6 md:p-8 rounded-lg border border-border_light_dark shadow-xl 
-                  bg-dark/80 backdrop-blur-sm">
-    <header class="mb-8 border-b border-border_dark_dark pb-4">
+  <article class="prose dark:prose-invert max-w-none lg:prose-xl prose-headings:text-accent_cyan_light dark:prose-headings:text-accent_cyan prose-a:text-accent_blue_light dark:prose-a:text-accent_blue hover:prose-a:text-accent_magenta prose-a:transition-colors prose-a:duration-200 prose-strong:text-accent_yellow_light dark:prose-strong:text-accent_yellow prose-code:text-accent_magenta 
+                  p-6 md:p-8 rounded-lg border border-border_light_light dark:border-border_light_dark shadow-xl 
+                  bg-light/95 dark:bg-dark/80 backdrop-blur-sm">
+    <header class="mb-8 border-b border-border_dark_light dark:border-border_dark_dark pb-4">
       <h1 class="!text-4xl !mb-2">{title}</h1>
       {pubDate && (
-        <p class="text-text_secondary_dark text-sm">Published on {pubDate}</p>
+        <p class="text-text_secondary_light dark:text-text_secondary_dark text-sm">Published on {pubDate}</p>
       )}
       {/* TODO: Add author, tags, etc. if needed from frontmatter */}
     </header>
@@ -27,7 +27,7 @@ const pubDate = frontmatter.date ? new Date(frontmatter.date).toLocaleDateString
 
     {/* Links Section - Rendered from Layout using Frontmatter */}
     {(frontmatter.url_pdf || frontmatter.url_code || frontmatter.url_source) && (
-      <footer class="mt-12 pt-6 border-t border-border_dark">
+      <footer class="mt-12 pt-6 border-t border-border_dark_light dark:border-border_dark">
         <h2 class="text-xl font-semibold text-text_secondary_light dark:text-text_secondary_dark mb-3">Links</h2>
         <ul class="list-none p-0 space-y-2">
           {frontmatter.url_pdf && (

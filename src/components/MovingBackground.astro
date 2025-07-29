@@ -11,6 +11,28 @@
     width: 100%;
     height: 100%;
     z-index: -10; /* Place it behind all content */
+    background-size: 400% 400%;
+    animation: gradientBG 30s ease infinite;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Light mode background */
+  html:not(.dark) .moving-background {
+    background: linear-gradient(
+      -45deg, 
+      #ffffff, /* Pure white */
+      #f8fafc, /* Very light gray */
+      #ffffff, 
+      #f1f5f9, /* Subtle blue hint */
+      #ffffff,
+      #f8fafc, /* Very light warm hint */
+      #ffffff
+    );
+    opacity: 0.6; /* Subtle in light mode */
+  }
+
+  /* Dark mode background */
+  html.dark .moving-background {
     background: linear-gradient(
       -45deg, 
       #0d1117, /* New base dark */
@@ -21,9 +43,7 @@
       #22272e, /* Subtle warm hint */
       #0d1117
     );
-    background-size: 400% 400%;
-    animation: gradientBG 30s ease infinite; /* Slower animation */
-    opacity: 0.8; /* Slightly more visible */
+    opacity: 0.8; /* More visible in dark mode */
   }
 
   @keyframes gradientBG {
@@ -37,11 +57,6 @@
       background-position: 0% 50%;
     }
   }
-
-  /* Ensure it doesn't interfere with light mode too much - Removing this as light mode is gone */
-  /* html:not(.dark) .moving-background {
-     opacity: 0.1; /* Make it very faint in light mode */
-  /*} */
 
   /* Keep gradient but stop animation on specific pages */
   body.no-moving-background .moving-background {

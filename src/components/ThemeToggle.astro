@@ -1,0 +1,61 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<button 
+  id="theme-toggle" 
+  class="relative w-11 h-11 flex items-center justify-center bg-accent_cyan_light/10 dark:bg-accent_cyan/20 rounded-lg border border-accent_cyan_light/20 dark:border-accent_cyan/30 hover:bg-accent_cyan_light/20 dark:hover:bg-accent_cyan/30 active:bg-accent_cyan_light/30 dark:active:bg-accent_cyan/40 transition-all duration-200 touch-manipulation group"
+  aria-label="Toggle theme"
+  title="Toggle light/dark mode"
+  onclick="window.toggleTheme && window.toggleTheme()"
+>
+  <!-- Sun Icon (Light Mode) -->
+  <Icon 
+    name="mdi:white-balance-sunny" 
+    class="w-5 h-5 text-accent_cyan_light dark:text-accent_cyan transition-all duration-300 transform scale-100 opacity-100 dark:scale-0 dark:opacity-0 absolute" 
+  />
+  
+  <!-- Moon Icon (Dark Mode) -->
+  <Icon 
+    name="mdi:moon-waning-crescent" 
+    class="w-5 h-5 text-accent_cyan_light dark:text-accent_cyan transition-all duration-300 transform scale-0 opacity-0 dark:scale-100 dark:opacity-100 absolute" 
+  />
+  
+  <!-- Touch feedback ring -->
+  <div class="absolute inset-0 rounded-lg bg-accent_cyan_light/30 dark:bg-accent_cyan/30 scale-0 group-active:scale-110 transition-transform duration-150"></div>
+</button>
+
+<script is:inline>
+  // Global theme toggle function
+  window.toggleTheme = function() {
+    const isDark = document.documentElement.classList.contains('dark');
+    const button = document.getElementById('theme-toggle');
+    
+    if (isDark) {
+      // Switch to light mode
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      button?.setAttribute('aria-label', 'Switch to dark mode');
+      console.log('Switched to light mode');
+    } else {
+      // Switch to dark mode
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      button?.setAttribute('aria-label', 'Switch to light mode');
+      console.log('Switched to dark mode');
+    }
+  };
+</script>
+
+<style>
+  /* Enhanced theme toggle button */
+  #theme-toggle {
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 8px rgba(88, 166, 255, 0.1);
+  }
+  
+  /* Ensure smooth icon transitions */
+  #theme-toggle svg {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+  }
+</style> 

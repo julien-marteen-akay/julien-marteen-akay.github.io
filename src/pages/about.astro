@@ -48,13 +48,13 @@ const renderedBioHtml = marked.parse(detailedBio);
           <img 
             src={avatarSrc} 
             alt="Julien Marteen Akay" 
-            class="w-32 h-32 sm:w-40 sm:h-40 rounded-lg border-2 border-border_dark_dark object-cover shadow-lg"
+            class="w-32 h-32 sm:w-40 sm:h-40 rounded-lg border-2 border-border_light_light dark:border-border_dark_dark object-cover shadow-lg"
           />
         </div>
         <div class="text-center space-y-4">
-          <h1 class="text-3xl sm:text-4xl font-bold text-accent_yellow">About Me</h1>
-          <p class="text-base sm:text-lg text-text_secondary_dark">{bio}</p>
-          <div class="prose dark:prose-invert max-w-none text-text_primary_dark prose-sm sm:prose-base text-left" set:html={renderedBioHtml} />
+          <h1 class="text-3xl sm:text-4xl font-bold text-accent_yellow_light dark:text-accent_yellow">About Me</h1>
+          <p class="text-base sm:text-lg text-text_secondary_light dark:text-text_secondary_dark">{bio}</p>
+          <div class="prose dark:prose-invert max-w-none text-text_primary_light dark:text-text_primary_dark prose-sm sm:prose-base text-left" set:html={renderedBioHtml} />
           
           {/* Mobile Buttons - Stacked */}
           <div class="flex flex-col items-center space-y-4 pt-4">
@@ -69,7 +69,7 @@ const renderedBioHtml = marked.parse(detailedBio);
                   rel="noopener noreferrer" 
                   aria-label={link.label}
                   title={link.label} 
-                  class="text-text_secondary_dark hover:text-accent_cyan transition-colors duration-200 p-2 touch-manipulation"
+                  class="text-text_secondary_light dark:text-text_secondary_dark hover:text-accent_cyan_light dark:hover:text-accent_cyan transition-colors duration-200 p-2 touch-manipulation"
                 >
                   <span class="sr-only">{link.label}</span>
                   <Icon name={link.icon} class="w-6 h-6" />
@@ -85,12 +85,12 @@ const renderedBioHtml = marked.parse(detailedBio);
         <img 
           src={avatarSrc} 
           alt="Julien Marteen Akay" 
-          class="w-40 h-40 lg:w-48 lg:h-48 rounded-lg border-2 border-border_dark_dark object-cover shadow-lg mb-4 float-left mr-8 max-w-[180px] lg:max-w-[220px]"
+          class="w-40 h-40 lg:w-48 lg:h-48 rounded-lg border-2 border-border_light_light dark:border-border_dark_dark object-cover shadow-lg mb-4 float-left mr-8 max-w-[180px] lg:max-w-[220px]"
         />
         <div class="space-y-4">
-          <h1 class="text-4xl font-bold text-accent_yellow">About Me</h1>
-          <p class="text-lg text-text_secondary_dark">{bio}</p>
-          <div class="prose dark:prose-invert max-w-none text-text_primary_dark" set:html={renderedBioHtml} />
+          <h1 class="text-4xl font-bold text-accent_yellow_light dark:text-accent_yellow">About Me</h1>
+          <p class="text-lg text-text_secondary_light dark:text-text_secondary_dark">{bio}</p>
+          <div class="prose dark:prose-invert max-w-none text-text_primary_light dark:text-text_primary_dark" set:html={renderedBioHtml} />
           
           {/* Desktop Buttons - Inline */}
           <div class="flex items-center pt-4 gap-6">
@@ -105,7 +105,7 @@ const renderedBioHtml = marked.parse(detailedBio);
                   rel="noopener noreferrer" 
                   aria-label={link.label}
                   title={link.label} 
-                  class="text-text_secondary_dark hover:text-accent_cyan transition-colors duration-200"
+                                     class="text-text_secondary_light dark:text-text_secondary_dark hover:text-accent_cyan_light dark:hover:text-accent_cyan transition-colors duration-200"
                 >
                   <span class="sr-only">{link.label}</span>
                   <Icon name={link.icon} class="w-6 h-6" />
@@ -121,8 +121,8 @@ const renderedBioHtml = marked.parse(detailedBio);
     <section class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
       {/* Interests Column */}
       <div>
-        <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-accent_yellow border-b border-border_dark_dark pb-2">Research Interests</h2>
-        <ul class="space-y-2 list-disc list-inside text-text_primary_dark text-sm sm:text-base">
+        <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-accent_yellow_light dark:text-accent_yellow border-b border-border_dark_light dark:border-border_dark_dark pb-2">Research Interests</h2>
+        <ul class="space-y-2 list-disc list-inside text-text_primary_light dark:text-text_primary_dark text-sm sm:text-base">
           {interests.map(interest => (
             <li>{interest}</li>
           ))}
@@ -131,13 +131,13 @@ const renderedBioHtml = marked.parse(detailedBio);
 
       {/* Education Column */}
       <div>
-        <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-accent_yellow border-b border-border_dark_dark pb-2">Education</h2>
+        <h2 class="text-xl sm:text-2xl font-semibold mb-4 text-accent_yellow_light dark:text-accent_yellow border-b border-border_dark_light dark:border-border_dark_dark pb-2">Education</h2>
         <div class="space-y-4">
           {education.map(edu => (
             <div class="p-3 border border-transparent rounded-md">
-              <h3 class="text-base sm:text-lg font-medium text-accent_cyan">{edu.course}</h3>
-              <p class="text-text_secondary_dark text-xs sm:text-sm">{edu.institution}</p>
-              <p class="text-xs text-text_secondary_dark/70 mt-0.5">{edu.year}</p>
+              <h3 class="text-base sm:text-lg font-medium text-accent_cyan_light dark:text-accent_cyan">{edu.course}</h3>
+              <p class="text-text_secondary_light dark:text-text_secondary_dark text-xs sm:text-sm">{edu.institution}</p>
+              <p class="text-xs text-text_secondary_light/70 dark:text-text_secondary_dark/70 mt-0.5">{edu.year}</p>
             </div>
           ))}
         </div>

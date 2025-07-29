@@ -11,7 +11,7 @@ const posts = (await Astro.glob('./*.md')).sort(
 );
 ---
 <BaseLayout {title} {description}>
-  <h1 class="text-4xl font-bold mb-8 text-accent_yellow">{title}</h1>
+  <h1 class="text-4xl font-bold mb-8 text-accent_yellow_light dark:text-accent_yellow">{title}</h1>
 
   {posts.length === 0 ? (
     <p class="text-text_secondary_light dark:text-text_secondary_dark">No blog posts available yet.</p>
@@ -19,7 +19,7 @@ const posts = (await Astro.glob('./*.md')).sort(
     <ul class="space-y-6">
       {posts.map(post => (
         <li class="p-6 border rounded-lg shadow-md transition duration-300 ease-in-out 
-                   border-border_light_light hover:border-accent_blue 
+                   border-border_light_light hover:border-accent_blue_light 
                    dark:border-border_dark dark:hover:border-accent_blue 
                    bg-gradient-to-br from-light to-bg_subtle_light dark:from-dark/50 dark:to-bg_subtle_dark">
           <h2 class="text-2xl font-semibold mb-2">
@@ -35,7 +35,7 @@ const posts = (await Astro.glob('./*.md')).sort(
           <a href={post.frontmatter.externalUrl || post.url} 
              target={post.frontmatter.externalUrl ? "_blank" : "_self"} 
              rel={post.frontmatter.externalUrl ? "noopener noreferrer" : ""}
-             class="text-accent_blue hover:text-accent_magenta font-semibold">
+             class="text-accent_blue_light dark:text-accent_blue hover:text-accent_magenta font-semibold">
             {post.frontmatter.externalUrl ? 'Read on Medium \u2192' : 'Read more \u2192'} 
           </a>
         </li>
